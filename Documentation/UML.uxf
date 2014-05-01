@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1312</x>
+      <y>0</y>
+      <w>168</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Server
+--
+-client_list: Client[]
+-alert_list: Alert[]
+--
+#Operation(i: int): int
+
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1296</x>
+      <y>240</y>
+      <w>232</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>Client
+--
+-id: Long
+-monitor_manager: MonitorManager
+-command_runner : CommandExecutor
+-server_ip: String
+--
+poll_all_monitors(): String
+add_monitor()
+remove_monitor()
+get_all_monitors()
+pause(Monitor m)
+execute(Command?ID?Name?)
+
+--
+Responsibilities
+-- maintains connection to the server
+-- Handles Transmission of JSON results and  Serialized Command objects.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1296</x>
+      <y>576</y>
+      <w>208</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>MonitorManager
+--
+-id: Long
+-monitor_list: Monitor[]
+-server_ip: String
+--
+poll_all_monitors(): String
+
+--
+Responsibilities
+-- maintains all monitors for the client
+-- returns </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1568</x>
+      <y>576</y>
+      <w>248</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Monitor
+--
+-id: Long
+-resource_label: String
+
+--
+poll(): float
+max(): float
+min(): float
+--
+Responsibilities
+-- executes a single piece of monitoring code
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1384</x>
+      <y>128</y>
+      <w>40</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>24;24;24;112</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1384</x>
+      <y>424</y>
+      <w>40</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>24;24;24;152</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1480</x>
+      <y>584</y>
+      <w>104</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>24;24;88;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1664</x>
+      <y>680</y>
+      <w>48</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>32;24;24;88</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1512</x>
+      <y>752</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>RAMPercentMonitor</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1568</x>
+      <y>816</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>CPUCountMonitor</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1752</x>
+      <y>760</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>NetworkPercentMonitor</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1712</x>
+      <y>816</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>. . . . . . . . .</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1608</x>
+      <y>744</y>
+      <w>96</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1664</x>
+      <y>744</y>
+      <w>64</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;48;80</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1600</x>
+      <y>744</y>
+      <w>104</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>88;24;24;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1664</x>
+      <y>744</y>
+      <w>104</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;88;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>952</x>
+      <y>240</y>
+      <w>248</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>CommandExecutor
+--
+-id: Long
+-command_list: Command[]
+
+--
+add_command(Command c)
+get_commands():Command[]
+execute(Command c)
+--
+Responsibilities
+-- executes commands on the remote computer.
+-- holds all allowable commands on the terminal.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1176</x>
+      <y>256</y>
+      <w>136</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>120;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>952</x>
+      <y>440</y>
+      <w>248</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Command
+--
+-id: Long
+-name: String
+-resource_label: String
+
+--
+execute()
+undo()
+get_name()
+get_id()
+--
+Responsibilities
+-- Perform a single task or a macro task.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1048</x>
+      <y>368</y>
+      <w>40</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>24;24;24;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1112</x>
+      <y>696</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Reboot Command</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1048</x>
+      <y>640</y>
+      <w>80</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;64;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>912</x>
+      <y>696</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>ShutDownCommand</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1008</x>
+      <y>640</y>
+      <w>80</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>64;24;24;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1048</x>
+      <y>576</y>
+      <w>40</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;88</additional_attributes>
+  </element>
+</diagram>

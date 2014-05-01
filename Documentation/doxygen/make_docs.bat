@@ -1,0 +1,2 @@
+@cls
+Doxygen.exe Doxyfile
