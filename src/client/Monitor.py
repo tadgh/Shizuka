@@ -1,3 +1,4 @@
+import psutil
 import abc
 
 class Monitor:
@@ -20,6 +21,27 @@ class Monitor:
         :return: Float value of the resource being monitored
         """
         return
+
+    @abc.abstractmethod
+    def minimum(self):
+        """
+        Abstract method, returns the minimum possible value achievable by poll(), for the particular client.
+
+
+        :return: Float value of the minimum returnable value.
+        """
+        return
+
+    @abc.abstractmethod
+    def maximum(self):
+        """
+        Abstract method, returns the maximum possible value achievable by poll(), for the particular client.
+
+
+        :return: Float value of the maximum returnable value.
+        """
+        return
+
 
 
 
