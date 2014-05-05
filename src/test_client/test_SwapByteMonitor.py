@@ -1,11 +1,11 @@
 import unittest
-import SwapMBUsageMonitor
+import SwapByteMonitor
 
 
-class TestSwapMBUsageMonitor(unittest.TestCase):
+class TestSwapByteMonitor(unittest.TestCase):
 
     def setUp(self):
-        self.swap_mb_monitor = SwapMBUsageMonitor.SwapMBUsageMonitor()
+        self.swap_mb_monitor = SwapByteMonitor.SwapByteMonitor()
 
     def test_monitor_not_paused(self):
         paused = self.swap_mb_monitor.is_paused()

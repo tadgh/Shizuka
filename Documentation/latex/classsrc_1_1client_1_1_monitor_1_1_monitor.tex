@@ -1,0 +1,152 @@
+\hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor}{\section{Monitor Class Reference}
+\label{classsrc_1_1client_1_1_monitor_1_1_monitor}\index{Monitor@{Monitor}}
+}
+
+
+An Abstract class used as a base to create different monitors.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_ac775ee34451fdfa742b318538164070e}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a0e0ee93ca3f230923c58fe95eb5d5126}{toggle\-Pause}
+\item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_ab32012b1ca0c5f814dd17a92b48c08fe}{is\-\_\-paused}
+\item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a87cd0076a6d482a01482f25a64cf2fb4}{poll}
+\begin{DoxyCompactList}\small\item\em Abstract method, makes a single psutil call to return whichever parameter this monitor is polling for. \end{DoxyCompactList}\item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a4515aa6e0be4391413959391fef1109f}{minimum}
+\begin{DoxyCompactList}\small\item\em Abstract method, returns the minimum possible value achievable by \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a87cd0076a6d482a01482f25a64cf2fb4}{poll()}, for the particular client. \end{DoxyCompactList}\item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a8f6589fdc9d322ec8e0dc2c7ede55ce9}{maximum}
+\begin{DoxyCompactList}\small\item\em Abstract method, returns the maximum possible value achievable by \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a87cd0076a6d482a01482f25a64cf2fb4}{poll()}, for the particular client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a13ae22ab98825b8cfd66798f8218d5cd}{paused}
+\begin{DoxyCompactList}\small\item\em a boolean indicating whether the monitor is paused or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An Abstract class used as a base to create different monitors. 
+
+Has three methods that must be overriden\-: \begin{DoxyVerb}  1) poll(), the function that returns the current value of whatever resource you're looking at.
+  2) minimum(), which must return the lowest value that the resource could take on.
+  3) maximum(), which must return the largest value that the resource could take on. \end{DoxyVerb}
+ 
+
+Definition at line 11 of file Monitor.\-py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_ac775ee34451fdfa742b318538164070e}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
+\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def \-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_ac775ee34451fdfa742b318538164070e}
+
+
+Definition at line 14 of file Monitor.\-py.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_ab32012b1ca0c5f814dd17a92b48c08fe}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!is\-\_\-paused@{is\-\_\-paused}}
+\index{is\-\_\-paused@{is\-\_\-paused}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
+\subsubsection[{is\-\_\-paused}]{\setlength{\rightskip}{0pt plus 5cm}def is\-\_\-paused (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_ab32012b1ca0c5f814dd17a92b48c08fe}
+
+
+Definition at line 20 of file Monitor.\-py.
+
+\hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a8f6589fdc9d322ec8e0dc2c7ede55ce9}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!maximum@{maximum}}
+\index{maximum@{maximum}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
+\subsubsection[{maximum}]{\setlength{\rightskip}{0pt plus 5cm}def maximum (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_a8f6589fdc9d322ec8e0dc2c7ede55ce9}
+
+
+Abstract method, returns the maximum possible value achievable by \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a87cd0076a6d482a01482f25a64cf2fb4}{poll()}, for the particular client. 
+
+\begin{DoxyReturn}{Returns}
+Float value of the maximum returnable value. 
+\end{DoxyReturn}
+
+
+Definition at line 45 of file Monitor.\-py.
+
+\hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a4515aa6e0be4391413959391fef1109f}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!minimum@{minimum}}
+\index{minimum@{minimum}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
+\subsubsection[{minimum}]{\setlength{\rightskip}{0pt plus 5cm}def minimum (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_a4515aa6e0be4391413959391fef1109f}
+
+
+Abstract method, returns the minimum possible value achievable by \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a87cd0076a6d482a01482f25a64cf2fb4}{poll()}, for the particular client. 
+
+\begin{DoxyReturn}{Returns}
+Float value of the minimum returnable value. 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file Monitor.\-py.
+
+\hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a87cd0076a6d482a01482f25a64cf2fb4}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!poll@{poll}}
+\index{poll@{poll}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
+\subsubsection[{poll}]{\setlength{\rightskip}{0pt plus 5cm}def poll (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_a87cd0076a6d482a01482f25a64cf2fb4}
+
+
+Abstract method, makes a single psutil call to return whichever parameter this monitor is polling for. 
+
+\begin{DoxyReturn}{Returns}
+Float value of the resource being monitored 
+\end{DoxyReturn}
+
+
+Definition at line 30 of file Monitor.\-py.
+
+\hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a0e0ee93ca3f230923c58fe95eb5d5126}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!toggle\-Pause@{toggle\-Pause}}
+\index{toggle\-Pause@{toggle\-Pause}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
+\subsubsection[{toggle\-Pause}]{\setlength{\rightskip}{0pt plus 5cm}def toggle\-Pause (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_a0e0ee93ca3f230923c58fe95eb5d5126}
+
+
+Definition at line 17 of file Monitor.\-py.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a13ae22ab98825b8cfd66798f8218d5cd}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!paused@{paused}}
+\index{paused@{paused}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
+\subsubsection[{paused}]{\setlength{\rightskip}{0pt plus 5cm}paused}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_a13ae22ab98825b8cfd66798f8218d5cd}
+
+
+a boolean indicating whether the monitor is paused or not. 
+
+
+
+Definition at line 15 of file Monitor.\-py.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Master/\-Documents/\-Git\-Hub/\-Shizuka/src/client/\hyperlink{_monitor_8py}{Monitor.\-py}\end{DoxyCompactItemize}
