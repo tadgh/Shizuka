@@ -7,8 +7,8 @@ from Monitor import Monitor
 #
 class StoragePercentMonitor(Monitor):
 
-    def __init__(self, drive_root):
-        Monitor.__init__(self)
+    def __init__(self, identifier, drive_root):
+        Monitor.__init__(self, identifier)
         logging.info("Initializing Storage Percent Monitor")
         self._drive_root = drive_root
         self._minimum = 0.0

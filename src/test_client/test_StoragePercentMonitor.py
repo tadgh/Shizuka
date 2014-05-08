@@ -8,7 +8,7 @@ class TestStoragePercentMonitor(unittest.TestCase):
 
     def setUp(self):
         self._drive = psutil.disk_partitions()[0].device
-        self.storage_percent_monitor = StoragePercentMonitor.StoragePercentMonitor(self._drive)
+        self.storage_percent_monitor = StoragePercentMonitor.StoragePercentMonitor(1, self._drive)
 
     def test_monitor_not_paused(self):
         paused = self.storage_percent_monitor.is_paused()
@@ -19,12 +19,12 @@ class TestStoragePercentMonitor(unittest.TestCase):
         self.assertIsInstance(storage_percent, float)
 
     def test_ram_within_limits(self):
-        percent_ram = self.storage_percent_monitor.poll()
+        percent_storage = self.storage_percent_monitor.poll()
         minimum = self.storage_percent_monitor.minimum()
         maximum = self.storage_percent_monitor.maximum()
-        self.assertTrue(percent_ram >= minimum and percent_ram <= maximum,
+        self.assertTrue(percent_storage > minimum and percent_storage <= maximum,
                         "Storage Percent is not within upper and lower bound limits: {} <= {} <= {}".format(minimum,
-                                                                                                     percent_ram,
+                                                                                                     percent_storage,
                                                                                                      maximum))
 
 

@@ -8,7 +8,7 @@ class TestStorageByteMonitor(unittest.TestCase):
 
     def setUp(self):
         self._drive = psutil.disk_partitions()[0].device
-        self.storage_byte_monitor = StorageByteMonitor.StorageByteMonitor(self._drive)
+        self.storage_byte_monitor = StorageByteMonitor.StorageByteMonitor(1,self._drive)
 
     def test_monitor_not_paused(self):
         paused = self.storage_byte_monitor.is_paused()
@@ -22,7 +22,7 @@ class TestStorageByteMonitor(unittest.TestCase):
         storage_in_use = self.storage_byte_monitor.poll()
         minimum = self.storage_byte_monitor.minimum()
         maximum = self.storage_byte_monitor.maximum()
-        self.assertTrue(storage_in_use >= minimum and storage_in_use <= maximum,
+        self.assertTrue(storage_in_use > minimum and storage_in_use <= maximum,
                         "Storage Amount(bytes) is not within upper and lower bound limits: {} <= {} <= {}".format(minimum,
                                                                                                      storage_in_use,
                                                                                                      maximum))

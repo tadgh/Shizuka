@@ -5,7 +5,7 @@ import SwapByteMonitor
 class TestSwapByteMonitor(unittest.TestCase):
 
     def setUp(self):
-        self.swap_mb_monitor = SwapByteMonitor.SwapByteMonitor()
+        self.swap_mb_monitor = SwapByteMonitor.SwapByteMonitor(1)
 
     def test_monitor_not_paused(self):
         paused = self.swap_mb_monitor.is_paused()

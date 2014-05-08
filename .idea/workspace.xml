@@ -2,140 +2,105 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c190789-e072-4719-98fb-6a91096a96a2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_byte_monitor_1_1_storage_percent_monitor.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_storage_byte_monitor_1_1_storage_percent_monitor.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/client/StorageByteMonitor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/client/StoragePercentMonitor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test_client/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_monitor_8py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/_monitor_8py.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_monitor_8py_source.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_ram_byte_monitor_8py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/_ram_byte_monitor_8py.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_ram_byte_monitor_8py_source.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_ram_percent_monitor_8py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/_ram_percent_monitor_8py.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_ram_percent_monitor_8py_source.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_storage_byte_monitor_8py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/_storage_byte_monitor_8py.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_storage_byte_monitor_8py_source.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_storage_percent_monitor_8py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/_storage_percent_monitor_8py.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_storage_percent_monitor_8py_source.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_swap_byte_monitor_8py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/_swap_byte_monitor_8py.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_swap_byte_monitor_8py_source.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_swap_percent_monitor_8py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/_swap_percent_monitor_8py.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/_swap_percent_monitor_8py_source.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/all_69.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/all_69.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/all_6d.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/all_6d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/all_70.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/all_70.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/classes_6d.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/classes_6d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/classes_73.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/classes_73.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_monitor_1_1_monitor-members.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_monitor_1_1_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_monitor_1_1_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor-members.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.eps" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor-members.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.eps" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_storage_byte_monitor_1_1_storage_percent_monitor-members.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_byte_monitor_1_1_storage_percent_monitor.eps" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_storage_byte_monitor_1_1_storage_percent_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_byte_monitor_1_1_storage_percent_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor-members.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.eps" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor-members.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.eps" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor-members.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.eps" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/files_6d.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/files_6d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/files_73.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/files_73.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_69.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_69.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_6d.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_6d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_70.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_70.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_ram_byte_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_ram_byte_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_ram_percent_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_ram_percent_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_storage_byte_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_storage_byte_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_storage_percent_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_storage_percent_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_swap_byte_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_swap_byte_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_swap_percent_monitor.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_swap_percent_monitor.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test_client/test_StorageByteMonitor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test_client/test_StoragePercentMonitor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/variables_70.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Documentation/html/search/variables_70.js" />
-      <change type="MOVED" beforePath="C:\Users\Master\Documents\GitHub\Shizuka\src\client\RAMPercentUsageMonitor.py" afterPath="$PROJECT_DIR$/src/client/RamPercentMonitor.py" />
-      <change type="MOVED" beforePath="C:\Users\Master\Documents\GitHub\Shizuka\src\client\RamMBUsageMonitor.py" afterPath="$PROJECT_DIR$/src/client/RamByteMonitor.py" />
-      <change type="MOVED" beforePath="C:\Users\Master\Documents\GitHub\Shizuka\src\client\SwapMBUsageMonitor.py" afterPath="$PROJECT_DIR$/src/client/SwapByteMonitor.py" />
-      <change type="MOVED" beforePath="C:\Users\Master\Documents\GitHub\Shizuka\src\client\SwapPercentUsageMonitor.py" afterPath="$PROJECT_DIR$/src/client/SwapPercentMonitor.py" />
-      <change type="MOVED" beforePath="C:\Users\Master\Documents\GitHub\Shizuka\src\test_client\test_RamMBUsageMonitor.py" afterPath="$PROJECT_DIR$/src/test_client/test_RamByteMonitor.py" />
-      <change type="MOVED" beforePath="C:\Users\Master\Documents\GitHub\Shizuka\src\test_client\test_RamPercentUsageMonitor.py" afterPath="$PROJECT_DIR$/src/test_client/test_RamPercentMonitor.py" />
-      <change type="MOVED" beforePath="C:\Users\Master\Documents\GitHub\Shizuka\src\test_client\test_SwapMBUsageMonitor.py" afterPath="$PROJECT_DIR$/src/test_client/test_SwapByteMonitor.py" />
-      <change type="MOVED" beforePath="C:\Users\Master\Documents\GitHub\Shizuka\src\test_client\test_SwapPercentUsageMonitor.py" afterPath="$PROJECT_DIR$/src/test_client/test_SwapPercentMonitor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/doxygen/Doxyfile" afterPath="$PROJECT_DIR$/Documentation/doxygen/Doxyfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.pdf" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.pdf" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.pdf" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.pdf" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.pdf" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/Monitor.py" afterPath="$PROJECT_DIR$/src/client/Monitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/RamByteMonitor.py" afterPath="$PROJECT_DIR$/src/client/RamByteMonitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/RamPercentMonitor.py" afterPath="$PROJECT_DIR$/src/client/RamPercentMonitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/StorageByteMonitor.py" afterPath="$PROJECT_DIR$/src/client/StorageByteMonitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/StoragePercentMonitor.py" afterPath="$PROJECT_DIR$/src/client/StoragePercentMonitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/SwapByteMonitor.py" afterPath="$PROJECT_DIR$/src/client/SwapByteMonitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/SwapPercentMonitor.py" afterPath="$PROJECT_DIR$/src/client/SwapPercentMonitor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/____init_____8py.html" afterPath="$PROJECT_DIR$/Documentation/html/____init_____8py.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/____init_____8py.tex" afterPath="$PROJECT_DIR$/Documentation/latex/____init_____8py.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/____init_____8py_source.html" afterPath="$PROJECT_DIR$/Documentation/html/____init_____8py_source.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_monitor_8py.html" afterPath="$PROJECT_DIR$/Documentation/html/_monitor_8py.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/_monitor_8py.tex" afterPath="$PROJECT_DIR$/Documentation/latex/_monitor_8py.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_monitor_8py_source.html" afterPath="$PROJECT_DIR$/Documentation/html/_monitor_8py_source.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_r_e_a_d_m_e_8md.html" afterPath="$PROJECT_DIR$/Documentation/html/_r_e_a_d_m_e_8md.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_r_e_a_d_m_e_8md_source.html" afterPath="$PROJECT_DIR$/Documentation/html/_r_e_a_d_m_e_8md_source.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_ram_byte_monitor_8py.html" afterPath="$PROJECT_DIR$/Documentation/html/_ram_byte_monitor_8py.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/_ram_byte_monitor_8py.tex" afterPath="$PROJECT_DIR$/Documentation/latex/_ram_byte_monitor_8py.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_ram_byte_monitor_8py_source.html" afterPath="$PROJECT_DIR$/Documentation/html/_ram_byte_monitor_8py_source.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_ram_percent_monitor_8py.html" afterPath="$PROJECT_DIR$/Documentation/html/_ram_percent_monitor_8py.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/_ram_percent_monitor_8py.tex" afterPath="$PROJECT_DIR$/Documentation/latex/_ram_percent_monitor_8py.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_ram_percent_monitor_8py_source.html" afterPath="$PROJECT_DIR$/Documentation/html/_ram_percent_monitor_8py_source.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_storage_byte_monitor_8py.html" afterPath="$PROJECT_DIR$/Documentation/html/_storage_byte_monitor_8py.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/_storage_byte_monitor_8py.tex" afterPath="$PROJECT_DIR$/Documentation/latex/_storage_byte_monitor_8py.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_storage_byte_monitor_8py_source.html" afterPath="$PROJECT_DIR$/Documentation/html/_storage_byte_monitor_8py_source.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_storage_percent_monitor_8py.html" afterPath="$PROJECT_DIR$/Documentation/html/_storage_percent_monitor_8py.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/_storage_percent_monitor_8py.tex" afterPath="$PROJECT_DIR$/Documentation/latex/_storage_percent_monitor_8py.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_storage_percent_monitor_8py_source.html" afterPath="$PROJECT_DIR$/Documentation/html/_storage_percent_monitor_8py_source.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_swap_byte_monitor_8py.html" afterPath="$PROJECT_DIR$/Documentation/html/_swap_byte_monitor_8py.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/_swap_byte_monitor_8py.tex" afterPath="$PROJECT_DIR$/Documentation/latex/_swap_byte_monitor_8py.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_swap_byte_monitor_8py_source.html" afterPath="$PROJECT_DIR$/Documentation/html/_swap_byte_monitor_8py_source.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_swap_percent_monitor_8py.html" afterPath="$PROJECT_DIR$/Documentation/html/_swap_percent_monitor_8py.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/_swap_percent_monitor_8py.tex" afterPath="$PROJECT_DIR$/Documentation/latex/_swap_percent_monitor_8py.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/_swap_percent_monitor_8py_source.html" afterPath="$PROJECT_DIR$/Documentation/html/_swap_percent_monitor_8py_source.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_5f.js" afterPath="$PROJECT_DIR$/Documentation/html/search/all_5f.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_67.js" afterPath="$PROJECT_DIR$/Documentation/html/search/all_67.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_69.html" afterPath="$PROJECT_DIR$/Documentation/html/search/all_69.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_69.js" afterPath="$PROJECT_DIR$/Documentation/html/search/all_69.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_6d.html" afterPath="$PROJECT_DIR$/Documentation/html/search/all_6d.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_6d.js" afterPath="$PROJECT_DIR$/Documentation/html/search/all_6d.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_70.html" afterPath="$PROJECT_DIR$/Documentation/html/search/all_70.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_70.js" afterPath="$PROJECT_DIR$/Documentation/html/search/all_70.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_72.js" afterPath="$PROJECT_DIR$/Documentation/html/search/all_72.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_73.js" afterPath="$PROJECT_DIR$/Documentation/html/search/all_73.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/all_74.js" afterPath="$PROJECT_DIR$/Documentation/html/search/all_74.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/annotated.html" afterPath="$PROJECT_DIR$/Documentation/html/annotated.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/annotated.tex" afterPath="$PROJECT_DIR$/Documentation/latex/annotated.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classes.html" afterPath="$PROJECT_DIR$/Documentation/html/classes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/classes_6d.html" afterPath="$PROJECT_DIR$/Documentation/html/search/classes_6d.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/classes_6d.js" afterPath="$PROJECT_DIR$/Documentation/html/search/classes_6d.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/classes_72.js" afterPath="$PROJECT_DIR$/Documentation/html/search/classes_72.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/classes_73.html" afterPath="$PROJECT_DIR$/Documentation/html/search/classes_73.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/classes_73.js" afterPath="$PROJECT_DIR$/Documentation/html/search/classes_73.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_monitor_1_1_monitor-members.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_monitor_1_1_monitor-members.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_monitor_1_1_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_monitor_1_1_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_monitor_1_1_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_monitor_1_1_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor-members.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor-members.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.eps" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.eps" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_byte_monitor_1_1_ram_byte_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor-members.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor-members.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.eps" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.eps" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_ram_percent_monitor_1_1_r_a_m_percent_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor-members.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor-members.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.eps" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.eps" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_storage_percent_monitor_1_1_storage_percent_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor-members.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor-members.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.eps" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.eps" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_byte_monitor_1_1_swap_byte_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor-members.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor-members.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.eps" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.eps" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/classsrc_1_1client_1_1_swap_percent_monitor_1_1_swap_percent_monitor.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/dir_68267d1309a1af8e8297ef4c3efbcdba.html" afterPath="$PROJECT_DIR$/Documentation/html/dir_68267d1309a1af8e8297ef4c3efbcdba.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/dir_6908ff505388a07996d238c763adbdab.html" afterPath="$PROJECT_DIR$/Documentation/html/dir_6908ff505388a07996d238c763adbdab.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/dir_6908ff505388a07996d238c763adbdab.tex" afterPath="$PROJECT_DIR$/Documentation/latex/dir_6908ff505388a07996d238c763adbdab.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/files.html" afterPath="$PROJECT_DIR$/Documentation/html/files.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/files.tex" afterPath="$PROJECT_DIR$/Documentation/latex/files.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/files_6d.html" afterPath="$PROJECT_DIR$/Documentation/html/search/files_6d.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/files_6d.js" afterPath="$PROJECT_DIR$/Documentation/html/search/files_6d.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/files_72.js" afterPath="$PROJECT_DIR$/Documentation/html/search/files_72.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/files_73.html" afterPath="$PROJECT_DIR$/Documentation/html/search/files_73.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/files_73.js" afterPath="$PROJECT_DIR$/Documentation/html/search/files_73.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/functions.html" afterPath="$PROJECT_DIR$/Documentation/html/functions.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/functions_5f.js" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_5f.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/functions_67.js" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_67.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/functions_69.html" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_69.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/functions_69.js" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_69.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/functions_6d.html" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_6d.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/functions_6d.js" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_6d.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/functions_70.html" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_70.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/functions_70.js" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_70.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/functions_74.js" afterPath="$PROJECT_DIR$/Documentation/html/search/functions_74.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/functions_func.html" afterPath="$PROJECT_DIR$/Documentation/html/functions_func.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/functions_vars.html" afterPath="$PROJECT_DIR$/Documentation/html/functions_vars.html" />
@@ -144,14 +109,36 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/index.html" afterPath="$PROJECT_DIR$/Documentation/html/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacemembers.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacemembers.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacemembers_vars.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacemembers_vars.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespaces.html" afterPath="$PROJECT_DIR$/Documentation/html/namespaces.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/namespaces.tex" afterPath="$PROJECT_DIR$/Documentation/latex/namespaces.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/namespaces_73.js" afterPath="$PROJECT_DIR$/Documentation/html/search/namespaces_73.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacesrc.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/namespacesrc.tex" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client.tex" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_ram_byte_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_ram_byte_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_ram_byte_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_ram_byte_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_ram_percent_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_ram_percent_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_ram_percent_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_ram_percent_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_storage_byte_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_storage_byte_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_storage_byte_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_storage_byte_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_storage_percent_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_storage_percent_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_storage_percent_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_storage_percent_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_swap_byte_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_swap_byte_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_swap_byte_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_swap_byte_monitor.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_swap_percent_monitor.html" afterPath="$PROJECT_DIR$/Documentation/html/namespacesrc_1_1client_1_1_swap_percent_monitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_swap_percent_monitor.tex" afterPath="$PROJECT_DIR$/Documentation/latex/namespacesrc_1_1client_1_1_swap_percent_monitor.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/latex/refman.tex" afterPath="$PROJECT_DIR$/Documentation/latex/refman.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/search.js" afterPath="$PROJECT_DIR$/Documentation/html/search/search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test_client/test_RamByteMonitor.py" afterPath="$PROJECT_DIR$/src/test_client/test_RamByteMonitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test_client/test_RamPercentMonitor.py" afterPath="$PROJECT_DIR$/src/test_client/test_RamPercentMonitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test_client/test_StorageByteMonitor.py" afterPath="$PROJECT_DIR$/src/test_client/test_StorageByteMonitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test_client/test_StoragePercentMonitor.py" afterPath="$PROJECT_DIR$/src/test_client/test_StoragePercentMonitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test_client/test_SwapByteMonitor.py" afterPath="$PROJECT_DIR$/src/test_client/test_SwapByteMonitor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test_client/test_SwapPercentMonitor.py" afterPath="$PROJECT_DIR$/src/test_client/test_SwapPercentMonitor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/variables_5f.js" afterPath="$PROJECT_DIR$/Documentation/html/search/variables_5f.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/variables_70.html" afterPath="$PROJECT_DIR$/Documentation/html/search/variables_70.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentation/html/search/variables_70.js" afterPath="$PROJECT_DIR$/Documentation/html/search/variables_70.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Shizuka.iws" />
@@ -178,10 +165,8 @@
       <file leaf-file-name="StoragePercentMonitor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/StoragePercentMonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="58" selection-end="141" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
+            <state line="10" column="42" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -189,10 +174,8 @@
       <file leaf-file-name="StorageByteMonitor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/StorageByteMonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="22" selection-start="904" selection-end="904" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
+            <state line="17" column="0" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -200,10 +183,8 @@
       <file leaf-file-name="test_StorageByteMonitor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test_client/test_StorageByteMonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state line="17" column="57" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -211,18 +192,7 @@
       <file leaf-file-name="test_StoragePercentMonitor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test_client/test_StoragePercentMonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="46" selection-start="534" selection-end="534" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SwapByteMonitor.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/SwapByteMonitor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="26" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+            <state line="16" column="33" selection-start="490" selection-end="490" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
               <folding />
             </state>
           </provider>
@@ -231,16 +201,16 @@
       <file leaf-file-name="RamPercentMonitor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/RamPercentMonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="64" selection-start="517" selection-end="517" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+            <state line="10" column="42" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RamByteMonitor.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/RamByteMonitor.py">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test_client/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="4" selection-start="508" selection-end="666" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+            <state line="0" column="0" selection-start="0" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
               <folding />
             </state>
           </provider>
@@ -249,25 +219,38 @@
       <file leaf-file-name="Monitor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/Monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+            <state line="39" column="39" selection-start="1210" selection-end="1210" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MonitorManager.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/MonitorManager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="54" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0" vertical-offset="247" max-vertical-offset="816">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/__init__.py">
+      <file leaf-file-name="test_MonitorManager.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test_client/test_MonitorManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
-              <folding />
+            <state line="43" column="0" selection-start="1527" selection-end="1527" vertical-scroll-proportion="1.28471" vertical-offset="0" max-vertical-offset="935">
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Doxyfile" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Documentation/doxygen/Doxyfile">
+      <file leaf-file-name="test_RamByteMonitor.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test_client/test_RamByteMonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="879" column="77" selection-start="37881" selection-end="37881" vertical-scroll-proportion="0.5890411" vertical-offset="14642" max-vertical-offset="38879">
+            <state line="24" column="110" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
               <folding />
             </state>
           </provider>
@@ -309,27 +292,30 @@
         <option value="$PROJECT_DIR$/src/client/SwapMBUsageMonitor.py" />
         <option value="$PROJECT_DIR$/src/client/RamMBUsageMonitor.py" />
         <option value="$PROJECT_DIR$/src/client/RamByteUsageMonitor.py" />
-        <option value="$PROJECT_DIR$/src/test_client/test_SwapPercentMonitor.py" />
-        <option value="$PROJECT_DIR$/src/test_client/test_SwapByteMonitor.py" />
-        <option value="$PROJECT_DIR$/src/test_client/test_RamPercentMonitor.py" />
-        <option value="$PROJECT_DIR$/src/test_client/test_RamByteMonitor.py" />
-        <option value="$PROJECT_DIR$/src/test_client/test_StorageByteMonitor.py" />
-        <option value="$PROJECT_DIR$/src/client/RamByteMonitor.py" />
         <option value="$PROJECT_DIR$/Documentation/doxygen/Doxyfile" />
-        <option value="$PROJECT_DIR$/src/client/Monitor.py" />
         <option value="$PROJECT_DIR$/src/client/RamPercentMonitor.py" />
         <option value="$PROJECT_DIR$/src/client/StoragePercentMonitor.py" />
-        <option value="$PROJECT_DIR$/src/client/SwapPercentMonitor.py" />
         <option value="$PROJECT_DIR$/src/client/SwapByteMonitor.py" />
+        <option value="$PROJECT_DIR$/src/client/SwapPercentMonitor.py" />
+        <option value="$PROJECT_DIR$/src/client/RamByteMonitor.py" />
+        <option value="$PROJECT_DIR$/src/client/Monitor.py" />
+        <option value="$PROJECT_DIR$/src/test_client/test_RamByteMonitor.py" />
+        <option value="$PROJECT_DIR$/src/test_client/test_RamPercentMonitor.py" />
+        <option value="$PROJECT_DIR$/src/test_client/test_StorageByteMonitor.py" />
         <option value="$PROJECT_DIR$/src/test_client/test_StoragePercentMonitor.py" />
+        <option value="$PROJECT_DIR$/src/test_client/test_SwapByteMonitor.py" />
+        <option value="$PROJECT_DIR$/src/test_client/test_SwapPercentMonitor.py" />
         <option value="$PROJECT_DIR$/src/client/StorageByteMonitor.py" />
+        <option value="$PROJECT_DIR$/src/client/MonitorManager.py" />
+        <option value="$PROJECT_DIR$/src/test_client/test_MonitorManager.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
-    <option name="width" value="960" />
-    <option name="height" value="1040" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -739,22 +725,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1040" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1787649" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.178515" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33516484" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3347732" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -780,6 +766,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Documentation/doxygen/Doxyfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="879" column="77" selection-start="37881" selection-end="37881" vertical-scroll-proportion="0.0" vertical-offset="14642" max-vertical-offset="38879">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test_client/test_RamByteMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="35" selection-start="869" selection-end="869" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
@@ -796,16 +789,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test_client/test_SwapByteMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="50" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="663">
-          <folding />
-        </state>
+        <state line="14" column="50" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="663" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test_client/test_SwapPercentMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="32" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="663">
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -868,16 +859,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test_client/test_SwapByteMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="50" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="663">
-          <folding />
-        </state>
+        <state line="14" column="50" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="663" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test_client/test_SwapPercentMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="663">
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1015,113 +1004,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test_client/test_SwapPercentMonitor.py">
+    <entry file="file://$PROJECT_DIR$/Documentation/doxygen/Doxyfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="21" selection-start="65" selection-end="65" vertical-scroll-proportion="0.07736064" vertical-offset="0" max-vertical-offset="879">
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test_client/test_SwapByteMonitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="18" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+        <state line="890" column="0" selection-start="38216" selection-end="38216" vertical-scroll-proportion="0.0" vertical-offset="14642" max-vertical-offset="38879">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test_client/test_RamPercentMonitor.py">
+    <entry file="file://$PROJECT_DIR$/src/test_client/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="20" selection-start="63" selection-end="63" vertical-scroll-proportion="0.07736064" vertical-offset="0" max-vertical-offset="879">
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test_client/test_RamByteMonitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="47" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/Monitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/RamByteMonitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="4" selection-start="508" selection-end="666" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/RamPercentMonitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="64" selection-start="517" selection-end="517" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+        <state line="0" column="0" selection-start="0" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/SwapPercentMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="30" selection-start="246" selection-end="246" vertical-scroll-proportion="0.2665505" vertical-offset="0" max-vertical-offset="574">
+        <state line="10" column="42" selection-start="239" selection-end="239" vertical-scroll-proportion="0.15437004" vertical-offset="0" max-vertical-offset="881">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test_client/test_StoragePercentMonitor.py">
+    <entry file="file://$PROJECT_DIR$/src/client/SwapByteMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="46" selection-start="534" selection-end="534" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+        <state line="11" column="42" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/StoragePercentMonitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="42" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/RamPercentMonitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="42" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/Monitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="39" selection-start="1210" selection-end="1210" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test_client/test_StorageByteMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+        <state line="17" column="57" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test_client/test_StoragePercentMonitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="33" selection-start="490" selection-end="490" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test_client/test_SwapByteMonitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="34" selection-start="366" selection-end="366" vertical-scroll-proportion="0.29876977" vertical-offset="34" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test_client/test_SwapPercentMonitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="51" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="663">
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/StorageByteMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="22" selection-start="904" selection-end="904" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/StoragePercentMonitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="58" selection-end="141" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/SwapByteMonitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="26" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+        <state line="17" column="0" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Documentation/doxygen/Doxyfile">
+    <entry file="file://$PROJECT_DIR$/src/test_client/test_RamPercentMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="879" column="77" selection-start="37881" selection-end="37881" vertical-scroll-proportion="0.5890411" vertical-offset="14642" max-vertical-offset="38879">
+        <state line="7" column="72" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="629">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/RamByteMonitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="904" selection-end="904" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/MonitorManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="54" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0" vertical-offset="247" max-vertical-offset="816">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test_client/test_RamByteMonitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="110" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test_client/test_MonitorManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="0" selection-start="1527" selection-end="1527" vertical-scroll-proportion="1.28471" vertical-offset="0" max-vertical-offset="935">
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

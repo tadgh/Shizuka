@@ -2,6 +2,7 @@ var searchData=
 [
   ['client',['client',['../namespacesrc_1_1client.html',1,'src']]],
   ['monitor',['Monitor',['../namespacesrc_1_1client_1_1_monitor.html',1,'src::client']]],
+  ['monitormanager',['MonitorManager',['../namespacesrc_1_1client_1_1_monitor_manager.html',1,'src::client']]],
   ['rambytemonitor',['RamByteMonitor',['../namespacesrc_1_1client_1_1_ram_byte_monitor.html',1,'src::client']]],
   ['rampercentmonitor',['RamPercentMonitor',['../namespacesrc_1_1client_1_1_ram_percent_monitor.html',1,'src::client']]],
   ['src',['src',['../namespacesrc.html',1,'']]],

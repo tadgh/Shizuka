@@ -8,8 +8,8 @@ from Monitor import Monitor
 class SwapByteMonitor(Monitor):
 
 
-    def __init__(self):
-        Monitor.__init__(self)
+    def __init__(self, identifier):
+        Monitor.__init__(self, identifier)
         logging.info("Initializing Swap MB Usage Monitor")
         memory_object = psutil.swap_memory()
         self._minimum = 0.0

@@ -5,7 +5,7 @@ import RamPercentMonitor
 class TestRamPercentMonitor(unittest.TestCase):
 
     def setUp(self):
-        self.ram_percent_monitor = RamPercentMonitor.RAMPercentMonitor()
+        self.ram_percent_monitor = RamPercentMonitor.RAMPercentMonitor(1)
 
     def test_monitor_not_paused(self):
         paused = self.ram_percent_monitor.is_paused()

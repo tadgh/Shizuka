@@ -5,7 +5,7 @@ import SwapPercentMonitor
 class TestSwapPercentMonitor(unittest.TestCase):
 
     def setUp(self):
-        self.swap_percent_monitor = SwapPercentMonitor.SwapPercentMonitor()
+        self.swap_percent_monitor = SwapPercentMonitor.SwapPercentMonitor(1)
 
     def test_monitor_not_paused(self):
         paused = self.swap_percent_monitor.is_paused()

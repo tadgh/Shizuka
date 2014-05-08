@@ -15,6 +15,8 @@ def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a0e0ee93ca3f230923c58f
 \item 
 def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_ab32012b1ca0c5f814dd17a92b48c08fe}{is\-\_\-paused}
 \item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a02ebbca65067fb1a2947d36460ca6f50}{get\-\_\-id}
+\item 
 def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a87cd0076a6d482a01482f25a64cf2fb4}{poll}
 \begin{DoxyCompactList}\small\item\em Abstract method, makes a single psutil call to return whichever parameter this monitor is polling for. \end{DoxyCompactList}\item 
 def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a4515aa6e0be4391413959391fef1109f}{minimum}
@@ -25,7 +27,9 @@ def \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a8f6589fdc9d322ec8e0dc
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_a13ae22ab98825b8cfd66798f8218d5cd}{paused}
-\begin{DoxyCompactList}\small\item\em a boolean indicating whether the monitor is paused or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em a boolean indicating whether the monitor is paused or not. \end{DoxyCompactList}\item 
+\hyperlink{classsrc_1_1client_1_1_monitor_1_1_monitor_acf2488b95c97e0378c9bf49de3b50f28}{id}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -45,7 +49,8 @@ Definition at line 11 of file Monitor.\-py.
 \index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
 \subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def \-\_\-\-\_\-init\-\_\-\-\_\- (
 \begin{DoxyParamCaption}
-\item[{}]{self}
+\item[{}]{self, }
+\item[{}]{identifier}
 \end{DoxyParamCaption}
 )}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_ac775ee34451fdfa742b318538164070e}
 
@@ -55,6 +60,17 @@ Definition at line 14 of file Monitor.\-py.
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a02ebbca65067fb1a2947d36460ca6f50}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!get\-\_\-id@{get\-\_\-id}}
+\index{get\-\_\-id@{get\-\_\-id}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
+\subsubsection[{get\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}def get\-\_\-id (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_a02ebbca65067fb1a2947d36460ca6f50}
+
+
+Definition at line 24 of file Monitor.\-py.
+
 \hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_ab32012b1ca0c5f814dd17a92b48c08fe}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!is\-\_\-paused@{is\-\_\-paused}}
 \index{is\-\_\-paused@{is\-\_\-paused}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
 \subsubsection[{is\-\_\-paused}]{\setlength{\rightskip}{0pt plus 5cm}def is\-\_\-paused (
@@ -64,7 +80,7 @@ Definition at line 14 of file Monitor.\-py.
 )}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_ab32012b1ca0c5f814dd17a92b48c08fe}
 
 
-Definition at line 20 of file Monitor.\-py.
+Definition at line 21 of file Monitor.\-py.
 
 \hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a8f6589fdc9d322ec8e0dc2c7ede55ce9}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!maximum@{maximum}}
 \index{maximum@{maximum}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
@@ -82,7 +98,7 @@ Float value of the maximum returnable value.
 \end{DoxyReturn}
 
 
-Definition at line 45 of file Monitor.\-py.
+Definition at line 49 of file Monitor.\-py.
 
 \hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a4515aa6e0be4391413959391fef1109f}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!minimum@{minimum}}
 \index{minimum@{minimum}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
@@ -100,7 +116,7 @@ Float value of the minimum returnable value.
 \end{DoxyReturn}
 
 
-Definition at line 38 of file Monitor.\-py.
+Definition at line 42 of file Monitor.\-py.
 
 \hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a87cd0076a6d482a01482f25a64cf2fb4}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!poll@{poll}}
 \index{poll@{poll}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
@@ -118,7 +134,7 @@ Float value of the resource being monitored
 \end{DoxyReturn}
 
 
-Definition at line 30 of file Monitor.\-py.
+Definition at line 34 of file Monitor.\-py.
 
 \hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a0e0ee93ca3f230923c58fe95eb5d5126}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!toggle\-Pause@{toggle\-Pause}}
 \index{toggle\-Pause@{toggle\-Pause}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
@@ -129,11 +145,18 @@ Definition at line 30 of file Monitor.\-py.
 )}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_a0e0ee93ca3f230923c58fe95eb5d5126}
 
 
-Definition at line 17 of file Monitor.\-py.
+Definition at line 18 of file Monitor.\-py.
 
 
 
 \subsection{Member Data Documentation}
+\hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_acf2488b95c97e0378c9bf49de3b50f28}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!id@{id}}
+\index{id@{id}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
+\subsubsection[{id}]{\setlength{\rightskip}{0pt plus 5cm}id}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_acf2488b95c97e0378c9bf49de3b50f28}
+
+
+Definition at line 16 of file Monitor.\-py.
+
 \hypertarget{classsrc_1_1client_1_1_monitor_1_1_monitor_a13ae22ab98825b8cfd66798f8218d5cd}{\index{src\-::client\-::\-Monitor\-::\-Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}!paused@{paused}}
 \index{paused@{paused}!src::client::Monitor::Monitor@{src\-::client\-::\-Monitor\-::\-Monitor}}
 \subsubsection[{paused}]{\setlength{\rightskip}{0pt plus 5cm}paused}}\label{classsrc_1_1client_1_1_monitor_1_1_monitor_a13ae22ab98825b8cfd66798f8218d5cd}

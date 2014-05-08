@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['get_5fram_5fpercent',['get_ram_percent',['../classclient_1_1_r_a_m_monitor_1_1_r_a_m_monitor.html#ad225968bc7055e1a98e511d24022551b',1,'client::RAMMonitor::RAMMonitor']]]
+  ['get_5fid',['get_id',['../classsrc_1_1client_1_1_monitor_1_1_monitor.html#a02ebbca65067fb1a2947d36460ca6f50',1,'src::client::Monitor::Monitor']]]
 ];

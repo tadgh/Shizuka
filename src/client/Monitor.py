@@ -11,14 +11,18 @@ import abc
 class Monitor:
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self):
+    def __init__(self, identifier):
         self.paused = False
+        self.id = identifier
 
     def togglePause(self):
         self.paused = not self.paused
 
     def is_paused(self):
         return self.paused
+
+    def get_id(self):
+        return self.id
 
     ## @var paused
     # a boolean indicating whether the monitor is paused or not.

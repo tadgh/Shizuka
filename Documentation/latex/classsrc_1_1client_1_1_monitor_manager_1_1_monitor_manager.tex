@@ -1,0 +1,127 @@
+\hypertarget{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager}{\section{Monitor\-Manager Class Reference}
+\label{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager}\index{Monitor\-Manager@{Monitor\-Manager}}
+}
+
+
+Class that handles all monitors on the client.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_ac775ee34451fdfa742b318538164070e}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Sets an empty monitor list. \end{DoxyCompactList}\item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_abe39e549c4d37cfd0f5c3ac74a019be5}{add\-\_\-monitor}
+\begin{DoxyCompactList}\small\item\em Adds a monitor object to the dictionary of monitors running on the client. \end{DoxyCompactList}\item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_aff7024b0a548be8e184741e3cb34580f}{remove\-\_\-monitor\-\_\-by\-\_\-id}
+\begin{DoxyCompactList}\small\item\em Removes a monitor object from the dictionary of monitors running on the client. \end{DoxyCompactList}\item 
+def \hyperlink{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_a7762ac47c82cdf2b48dbf7a773bdaf3a}{remove\-\_\-monitor}
+\begin{DoxyCompactList}\small\item\em Removes a monitor object from the dictionary of monitors running on the client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_a2449e01cd15223ed947772d927588390}{monitor\-\_\-list}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that handles all monitors on the client. 
+
+This class is responsible for getting all data returned from all the monitors, and passing it along to the networking section of the program, for sending to the server. This class also handles addition and removal of particular monitors. 
+
+Definition at line 9 of file Monitor\-Manager.\-py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_ac775ee34451fdfa742b318538164070e}{\index{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager@{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!src::client::MonitorManager::MonitorManager@{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager}}
+\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def \-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_ac775ee34451fdfa742b318538164070e}
+
+
+Sets an empty monitor list. 
+
+
+
+Definition at line 13 of file Monitor\-Manager.\-py.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_abe39e549c4d37cfd0f5c3ac74a019be5}{\index{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager@{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager}!add\-\_\-monitor@{add\-\_\-monitor}}
+\index{add\-\_\-monitor@{add\-\_\-monitor}!src::client::MonitorManager::MonitorManager@{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager}}
+\subsubsection[{add\-\_\-monitor}]{\setlength{\rightskip}{0pt plus 5cm}def add\-\_\-monitor (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{monitor}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_abe39e549c4d37cfd0f5c3ac74a019be5}
+
+
+Adds a monitor object to the dictionary of monitors running on the client. 
+
+
+
+Definition at line 21 of file Monitor\-Manager.\-py.
+
+\hypertarget{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_a7762ac47c82cdf2b48dbf7a773bdaf3a}{\index{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager@{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager}!remove\-\_\-monitor@{remove\-\_\-monitor}}
+\index{remove\-\_\-monitor@{remove\-\_\-monitor}!src::client::MonitorManager::MonitorManager@{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager}}
+\subsubsection[{remove\-\_\-monitor}]{\setlength{\rightskip}{0pt plus 5cm}def remove\-\_\-monitor (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{monitor}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_a7762ac47c82cdf2b48dbf7a773bdaf3a}
+
+
+Removes a monitor object from the dictionary of monitors running on the client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em monitor} & The specific monitor object that needs to be removed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 38 of file Monitor\-Manager.\-py.
+
+\hypertarget{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_aff7024b0a548be8e184741e3cb34580f}{\index{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager@{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager}!remove\-\_\-monitor\-\_\-by\-\_\-id@{remove\-\_\-monitor\-\_\-by\-\_\-id}}
+\index{remove\-\_\-monitor\-\_\-by\-\_\-id@{remove\-\_\-monitor\-\_\-by\-\_\-id}!src::client::MonitorManager::MonitorManager@{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager}}
+\subsubsection[{remove\-\_\-monitor\-\_\-by\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}def remove\-\_\-monitor\-\_\-by\-\_\-id (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{monitor\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_aff7024b0a548be8e184741e3cb34580f}
+
+
+Removes a monitor object from the dictionary of monitors running on the client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em monitor\-\_\-id} & The specific I\-D of the monitor that needs to be removed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Monitor\-Manager.\-py.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_a2449e01cd15223ed947772d927588390}{\index{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager@{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager}!monitor\-\_\-list@{monitor\-\_\-list}}
+\index{monitor\-\_\-list@{monitor\-\_\-list}!src::client::MonitorManager::MonitorManager@{src\-::client\-::\-Monitor\-Manager\-::\-Monitor\-Manager}}
+\subsubsection[{monitor\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}monitor\-\_\-list}}\label{classsrc_1_1client_1_1_monitor_manager_1_1_monitor_manager_a2449e01cd15223ed947772d927588390}
+
+
+Definition at line 15 of file Monitor\-Manager.\-py.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Master/\-Documents/\-Git\-Hub/\-Shizuka/src/client/\hyperlink{_monitor_manager_8py}{Monitor\-Manager.\-py}\end{DoxyCompactItemize}
