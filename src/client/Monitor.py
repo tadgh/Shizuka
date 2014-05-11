@@ -1,6 +1,7 @@
 import psutil
 import abc
 
+
 ## @brief An Abstract class used as a base to create different monitors.
 #
 # Has three methods that must be overriden:
@@ -13,7 +14,7 @@ class Monitor:
 
     def __init__(self, identifier):
         self.paused = False
-        self.id = identifier
+        self._id = identifier
 
     def togglePause(self):
         self.paused = not self.paused
@@ -22,7 +23,7 @@ class Monitor:
         return self.paused
 
     def get_id(self):
-        return self.id
+        return self._id
 
     ## @var paused
     # a boolean indicating whether the monitor is paused or not.

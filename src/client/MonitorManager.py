@@ -41,3 +41,25 @@ class MonitorManager():
             del self.monitor_list[monitor.get_id()]
         except KeyError:
             logging.error("Could not find Monitor:{} in the monitor list. Has it already been removed?".format(monitor))
+
+
+    ## Polls all monitors held by the monitor manager.
+    #  @return A dict that has Key values of the Monitor IDs, and a list containing [minimum, current, maximum] for the
+    # particular monitor.
+    #
+    def poll_all(self):
+        all_results = {}
+        for monitor_id, monitor in self.monitor_list.items():
+            all_results[monitor_id] = [monitor.minimum(), monitor.poll(), monitor.maximum()]
+
+        logging.info("Forthcoming Are all results from the Monitor Manager: \n***\n" +
+                     "\n".join([str(key) + str(value) for key,value in  all_results.items()]) + "\n***")
+        return all_results
+
+    def poll_monitor_by_id(self, monitor_id):
+        try:
+            monitor = self.monitor_list[monitor_id]
+            return monitor.poll()
+        except KeyError:
+            logging.error("Could not poll monitor with ID:{} as it was not found in the monitor list".format(monitor_id))
+            return None
