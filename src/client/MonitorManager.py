@@ -56,6 +56,7 @@ class MonitorManager():
                      "\n".join([str(key) + str(value) for key,value in  all_results.items()]) + "\n***")
         return all_results
 
+
     def poll_monitor_by_id(self, monitor_id):
         try:
             monitor = self.monitor_list[monitor_id]
@@ -63,3 +64,7 @@ class MonitorManager():
         except KeyError:
             logging.error("Could not poll monitor with ID:{} as it was not found in the monitor list".format(monitor_id))
             return None
+
+    def list_monitors(self):
+        return self.monitor_list
+

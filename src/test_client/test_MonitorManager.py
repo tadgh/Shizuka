@@ -4,7 +4,8 @@ import RamByteMonitor
 import RamPercentMonitor
 import logging
 
-##TODO figure out proper logging practice.
+
+#TODO figure out proper logging practice.
 logging.basicConfig(level=logging.INFO)
 
 
@@ -18,7 +19,7 @@ class TestMonitorManager(unittest.TestCase):
         self.manager.add_monitor(monitor_1)
         self.assertTrue(1 in self.manager.monitor_list.keys(), "uh oh, guess its not in the keys,.")
 
-    def test_monitor_properly_deleted_through_ID_deletion(self):
+    def test_monitor_properly_deleted_through_id_deletion(self):
         monitor_1 = RamPercentMonitor.RAMPercentMonitor(1)
         self.manager.add_monitor(monitor_1)
         self.manager.remove_monitor_by_id(1)
