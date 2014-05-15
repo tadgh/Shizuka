@@ -1,26 +1,35 @@
 import logging
 
-
-## Class that handles all monitors on the client.
+## Singleton class that handles all monitors on the client.
 #
-# This class is responsible for getting all data returned from all the monitors, and passing it along to the networking
-# section of the program, for sending to the server. This class also handles addition and removal of particular monitors.
+# This class handles the addition and removal of monitors.
 #
 class MonitorManager():
-    ## Sets an empty monitor list.
+    _instance = None
+
+    ## Create a MonitorManager singleton.
+    #
+    #
+    def __new__(class_, *args, **kwargs):
+        if not isinstance(class_._instance, class_):
+            class_._instance = object.__new__(class_, *args, **kwargs)
+            class_._instance.monitor_list = {}
+            logging.info("Created a new Monitor Manager singleton...")
+        return class_._instance
+
+    ## Does nothing, Singleton pattern. Otherwise, __init__ is called each time
+    #  the singleton is accessed, which is not desired behaviour.
     #
     #
     def __init__(self):
-        logging.info("Started up new Monitor Manager...")
-        self.monitor_list = {}
-        pass
+        return
 
     ## Adds a monitor object to the dictionary of monitors running on the client
     #
     #
     def add_monitor(self, monitor):
         logging.info("Adding monitor: {}".format(monitor.get_id()))
-        self.monitor_list[monitor.get_id()] = monitor
+        self._instance.monitor_list[monitor.get_id()] = monitor
 
     ## Removes a monitor object from the dictionary of monitors running on the client.
     #  @param monitor_id The specific ID of the monitor that needs to be removed.
@@ -28,7 +37,7 @@ class MonitorManager():
     def remove_monitor_by_id(self, monitor_id):
         try:
             logging.info("Deleting Monitor: {}".format(monitor_id) )
-            del self.monitor_list[monitor_id]
+            del self._instance.monitor_list[monitor_id]
         except KeyError:
             logging.error("Could not find Monitor with id: {}. Has it already been removed?".format(monitor_id))
 
@@ -38,33 +47,10 @@ class MonitorManager():
     def remove_monitor(self, monitor):
         try:
             logging.info("Deleting Monitor: {}".format(monitor))
-            del self.monitor_list[monitor.get_id()]
+            del self._instance.monitor_list[monitor.get_id()]
         except KeyError:
             logging.error("Could not find Monitor:{} in the monitor list. Has it already been removed?".format(monitor))
 
-
-    ## Polls all monitors held by the monitor manager.
-    #  @return A dict that has Key values of the Monitor IDs, and a list containing [minimum, current, maximum] for the
-    # particular monitor.
-    #
-    def poll_all(self):
-        all_results = {}
-        for monitor_id, monitor in self.monitor_list.items():
-            all_results[monitor_id] = [monitor.minimum(), monitor.poll(), monitor.maximum()]
-
-        logging.info("Forthcoming Are all results from the Monitor Manager: \n***\n" +
-                     "\n".join([str(key) + str(value) for key,value in  all_results.items()]) + "\n***")
-        return all_results
-
-
-    def poll_monitor_by_id(self, monitor_id):
-        try:
-            monitor = self.monitor_list[monitor_id]
-            return monitor.poll()
-        except KeyError:
-            logging.error("Could not poll monitor with ID:{} as it was not found in the monitor list".format(monitor_id))
-            return None
-
     def list_monitors(self):
-        return self.monitor_list
+        return self._instance.monitor_list
 

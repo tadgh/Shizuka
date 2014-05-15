@@ -34,27 +34,6 @@ class TestMonitorManager(unittest.TestCase):
     def test_empty_list_raises_error(self):
         self.assertRaises(KeyError, self.manager.remove_monitor_by_id(1))
 
-    def test_poll_all_monitors_size_is_correct(self):
-        mon1 = RamByteMonitor.RamByteMonitor(1)
-        mon2 = RamPercentMonitor.RAMPercentMonitor(2)
-        self.manager.add_monitor(mon1)
-        self.manager.add_monitor(mon2)
-        results = self.manager.poll_all()
-        self.assertEquals(len(results), 2)
-
-    def test_individual_poll_returns(self):
-        mon1 = RamByteMonitor.RamByteMonitor(100)
-        self.manager.add_monitor(mon1)
-        results = self.manager.poll_monitor_by_id(100)
-        self.assertIsNotNone(results)
-
-    def test_individual_poll_fails_when_monitor_does_not_exist(self):
-        mon1 = RamByteMonitor.RamByteMonitor(100)
-        self.manager.add_monitor(mon1)
-        self.assertRaises(KeyError, self.manager.poll_monitor_by_id(101))
-
-
-
 
 if __name__ == "__main__":
     unittest.main()

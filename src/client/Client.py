@@ -36,10 +36,6 @@ class Client:
             logging.error("Could not gather data. No monitor manager is set.")
             return None
 
-
-
-
-
 def main():
     client = Client()
     #todo Do some pyro stuff?
