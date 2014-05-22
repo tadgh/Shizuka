@@ -2,6 +2,9 @@ import DataManager
 from ClientErrors import ServerNotFoundError
 import logging
 import threading
+import Pyro4
+import Pyro4.errors
+import time
 
 ## Class for handling notification of any observers, when new data is polled.
 #
@@ -26,13 +29,19 @@ class Notifier:
     def get_polled_data(self):
         return self._data_manager.poll_all()
 
+
     ## Notifies the server object (A pyro proxy) of any new data.
     # @param polled_data A dictionary of data to be passed to the server.
     # @return A boolean indicating whether the server accepted our transmission.
     # @exception ServerNotFoundError if the server is not associated, raises this error.
     def post_to_server(self, polled_data):
         if self._reporting_server is not None:
-            data_was_received = self._reporting_server.notify(polled_data)
+            try:
+                data_was_received = self._reporting_server.notify(polled_data)
+            except AttributeError as e:
+                logging.error("Appears as though calling the remote notify() method on the server has failed",
+                              "attempting to reconnect.")
+                raise ServerNotFoundError
         else:
             logging.error("NO ASSOCIATED SERVER FOUND")
             raise ServerNotFoundError
@@ -45,10 +54,35 @@ class Notifier:
                 logging.info("Notifier initiating Data Poll...")
                 results = self.get_polled_data()
                 logging.info("Notifier posting Data to Server...")
-                accepted = self.post_to_server(results)
+                try:
+                    self.post_to_server(results)
+                except ServerNotFoundError as e:
+                    logging.error("Giving control to reconnection method. Posting to server failed...")
+                    self.reconnect_to_server()
+
+
                 time.sleep(10)
         poll_and_notify_thread = threading.Thread(target=poll_and_post)
         #TODO will need to uncomment next line once we set up the Pyro object on the client.
         #poll_and_notify_thread.setDaemon(True)
         poll_and_notify_thread.start()
+
+    def reconnect_to_server(self):
+        while True:
+            try:
+                name_server = Pyro4.locateNS()
+                if len(name_server.list(prefix="shizuka.server.")) > 0:
+                    reporting_server = Pyro4.Proxy(server_proxy_uri)
+                    self.set_server(reporting_server)
+                if self._reporting_server.ping():
+                    logging.info("Ping succeeded on server. Returning control to polling thread.")
+                    return True
+            except AttributeError as e:
+                logging.error("Found Nameserver, but couldn't find Server Object. Error Message: {}".format(str(e)))
+            except Pyro4.errors.NamingError as e:
+                logging.error("Unable to find NameServer for Pyro4. Is it running? Error message: {}".format(str(e)))
+            time.sleep(5)
+
+
+
 
