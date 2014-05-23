@@ -41,7 +41,37 @@ class Server:
         #polling_thread.setDaemon(True)
         polling_thread.start()
 
+    ## Uses the nameserver to register itself so that clients can find it.
+    def register_with_name_server(self):
+        if self._ns:
+            def request_loop():
+                if self._ns:
+                    daemon = Pyro4.Daemon()
+                    server_uri = daemon.register(self)
+                    ##todo determine how to properly name server
+
+                    try:
+                        self._ns.register("shizuka.server.instance", server_uri)
+                        daemon.requestLoop()
+                    except Exception as e:
+                        logging.error("Registration error! Error Message: {}".format(str(e)))
+            request_loop_thread = threading.Thread(target=request_loop)
+            request_loop_thread.start()
+
+
+    #Simple lightweight method that allows a client to verify its connection. This will only be called by clients.
+    # @return True, indicating successful connection.
+    def ping(self):
+        print("GOT PINGED!")
+        return True
+
+    #Called remotely by clients to pass dicts of data through.
+    # @param data A dictionary containing all relevant polling data for the client.
+    def notify(self, data):
+        print("Received some data from client...\n{}".format(data))
+        return True
 
 if __name__=="__main__":
     server = Server()
+    server.register_with_name_server()
     server.run()

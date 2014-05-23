@@ -16,11 +16,11 @@ class Notifier:
 
     ## Associate a reporting server here. Without one, no data is reported to the server.
     # @param reporting_server the pyro proxy object indicating the server to be associated.
-    def set_server(self, reporting_server):
+    def set_server(self, reporting_server, server_name):
         if self._reporting_server is None:
-            logging.info("Initializing server for the first time --> Found Server : {} ".format(reporting_server))
+            logging.info("Initializing server for the first time --> Found Server : {} ".format(server_name))
         else:
-            logging.warning("Server being re-assigned. : {} ".format(reporting_server))
+            logging.warning("Server being re-assigned. : {} ".format(server_name))
         self._reporting_server = reporting_server
 
 
@@ -68,20 +68,29 @@ class Notifier:
         poll_and_notify_thread.start()
 
     def reconnect_to_server(self):
-        while True:
+        disconnected = True
+        while disconnected:
+            print("THINGS!")
             try:
                 name_server = Pyro4.locateNS()
-                if len(name_server.list(prefix="shizuka.server.")) > 0:
-                    reporting_server = Pyro4.Proxy(server_proxy_uri)
-                    self.set_server(reporting_server)
-                if self._reporting_server.ping():
+                server_dict = name_server.list(prefix="shizuka.server.")
+                server_name, server_uri = server_dict.popitem()
+                if server_uri:
+                    logging.info("Found Server named: {} . Joining...".format(server_name))
+                    reporting_server = Pyro4.Proxy(server_uri)
+                    self.set_server(reporting_server, server_name)
+                try:
+                    self._reporting_server.ping()
                     logging.info("Ping succeeded on server. Returning control to polling thread.")
-                    return True
+                    disconnected = False
+                except Exception as e:
+                    logging.error("Unable to ping server: Error message: {}".format(str(e)))
             except AttributeError as e:
                 logging.error("Found Nameserver, but couldn't find Server Object. Error Message: {}".format(str(e)))
             except Pyro4.errors.NamingError as e:
                 logging.error("Unable to find NameServer for Pyro4. Is it running? Error message: {}".format(str(e)))
             time.sleep(5)
+        print("EXITING!!!!")
 
 
 

@@ -4,7 +4,7 @@ import Server
 import Pyro4.naming
 import Pyro4
 import threading
-
+import Client
 
 logging.basicConfig(level=logging.INFO)
 
@@ -22,6 +22,8 @@ class TestServer(unittest.TestCase):
 
     def test_adding_client_to_server(self):
         self.ns.list()
+        client = Client.Client()
+        client.run()
 
     def test_server_starts_with_no_clients(self):
         self.assertTrue(len(self.server._clients) == 0)
