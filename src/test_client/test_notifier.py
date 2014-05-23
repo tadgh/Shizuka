@@ -23,6 +23,7 @@ class TestNotifier(unittest.TestCase):
         #self._server = Server.Server()
 
     def test_notifier_fails_to_send_when_server_is_not_associated(self):
+        self._notifier.set_server(None, "simulate a dropped connection!")
         self.assertRaises(ServerNotFoundError, self._notifier.post_to_server, "some sample data!")
 
     def test_polled_data_comes_in_when_called(self):
@@ -32,6 +33,12 @@ class TestNotifier(unittest.TestCase):
     def test_thread_starts_correctly(self):
         self._notifier.run()
         self.assertEquals(2, threading.active_count())
+
+    def test_data_is_received_when_server_is_associated(self):
+            results = self._notifier.get_polled_data()
+            transmission_result = self._notifier.post_to_server(results)
+            self.assertTrue(transmission_result)
+
 
 
 

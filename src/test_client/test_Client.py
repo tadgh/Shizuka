@@ -1,3 +1,4 @@
+import threading
 import unittest
 import MonitorManager
 import RamByteMonitor
@@ -24,6 +25,15 @@ class TestMonitorManager(unittest.TestCase):
 
     def test_empty_client_has_no_monitors(self):
         self.assertIsNone(self.client.list_monitors())
+
+    def test_registration_to_name_server_succeeds(self):
+        self.client.register_to_name_server()
+        print(threading.enumerate())
+        #todo Not sure how to test this.... Waits on another thread?
+
+
+
+
 
 
 

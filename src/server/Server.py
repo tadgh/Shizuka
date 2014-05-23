@@ -3,7 +3,7 @@ import threading
 import logging
 import time
 import Pyro4.errors
-
+import Pyro4.naming
 
 logging.basicConfig(level=logging.INFO)
 

@@ -13,6 +13,7 @@ class Notifier:
     def __init__(self):
         self._data_manager = DataManager.DataManager()
         self._reporting_server = None
+        self.reconnect_to_server()
 
     ## Associate a reporting server here. Without one, no data is reported to the server.
     # @param reporting_server the pyro proxy object indicating the server to be associated.
@@ -62,9 +63,8 @@ class Notifier:
 
 
                 time.sleep(10)
-        poll_and_notify_thread = threading.Thread(target=poll_and_post)
-        #TODO will need to uncomment next line once we set up the Pyro object on the client.
-        #poll_and_notify_thread.setDaemon(True)
+        poll_and_notify_thread = threading.Thread(target=poll_and_post, name="hardware_polling_thread")
+        poll_and_notify_thread.setDaemon(True)
         poll_and_notify_thread.start()
 
     def reconnect_to_server(self):
