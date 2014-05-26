@@ -6,6 +6,7 @@ from Monitor import Monitor
 
 ## Polls PSUtil to get a value for the amount of bytes sent per second (B/s).
 #
+logging.basicConfig(level=logging.INFO)
 class BytesSentMonitor(Monitor):
 
 
@@ -19,9 +20,9 @@ class BytesSentMonitor(Monitor):
     ## Gets the output rate of the monitor in bytes/sec.
     #  @return Float indicating how many bytes/sec.
     def poll(self):
-        initial_bytes = psutil.net_io_counter()[0]
+        initial_bytes = psutil.net_io_counters()[0]
         time.sleep(1)
-        final_bytes = psutil.net_io_counter()[0]
+        final_bytes = psutil.net_io_counters()[0]
         return float(final_bytes - initial_bytes)
 
     def minimum(self):

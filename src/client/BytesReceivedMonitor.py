@@ -1,13 +1,13 @@
-import psutil
 import sys
 import time
 import logging
 from Monitor import Monitor
+import psutil
 
 ## Polls PSUtil to get a value for the amount of bytes received per second (B/s).
 #
+logging.basicConfig(level=logging.INFO)
 class BytesReceivedMonitor(Monitor):
-
 
     def __init__(self, identifier):
         Monitor.__init__(self, identifier)
@@ -19,9 +19,9 @@ class BytesReceivedMonitor(Monitor):
     ## Gets the received bit rate of the monitor in bytes/sec.
     #  @return Float indicating how many bytes/sec are received.
     def poll(self):
-        initial_bytes = psutil.net_io_counter()[1]
+        initial_bytes = psutil.net_io_counters()[1]
         time.sleep(1)
-        final_bytes = psutil.net_io_counter()[1]
+        final_bytes = psutil.net_io_counters()[1]
         return float(final_bytes - initial_bytes)
 
     def minimum(self):

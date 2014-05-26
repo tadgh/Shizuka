@@ -4,7 +4,7 @@ import Pyro4
 import Notifier
 import MonitorManager
 import socket
-
+import random
 ## The class that communicates with the server. This will need to be made into a Pyro4 Daemon, with a thread running the
 # polling duties, and another simply for communicating to the server.
 #
@@ -18,6 +18,7 @@ class Client:
         self._local_name = None
         #TODO is there a better way to start a new notifier?
         self._notifier = Notifier.Notifier()
+
 
     ## Sets a list of monitors to be run on this client, via a monitor manager.
     def set_monitor_manager(self, monitor_manager):
@@ -61,7 +62,7 @@ class Client:
                     daemon = Pyro4.Daemon()
                     client_uri = daemon.register(self)
 
-                    ns.register("shizuka.client.{}".format(hostname), client_uri)
+                    ns.register("shizuka.client.{}.{}".format(hostname, self._client_id), client_uri)
                     logging.info("Found the following in the nameserver after registration of client:{}".format(ns.list()))
                     self._local_name = "shizuka.client.{}".format(hostname)
                     daemon.requestLoop()
@@ -69,12 +70,29 @@ class Client:
                     logging.error("Couldn't connect to nameserver to register the client. Re-trying.: {}".format(e))
 
         request_thread = threading.Thread(target=register_internal, name="request_waiting_thread")
+        #request_thread.setDaemon(True)
         request_thread.start()
 
 
 def main():
+    import RamByteMonitor
+    import RamPercentMonitor
+    import BytesSentMonitor
+    import BytesReceivedMonitor
+
+    cid = random.randint(0, 10000)
     logging.basicConfig(level=logging.INFO)
-    client = Client()
+    client = Client(cid)
+    monman1 = MonitorManager.MonitorManager()
+    m1 = RamByteMonitor.RamByteMonitor(1)
+    m2 = RamPercentMonitor.RAMPercentMonitor(2)
+    m3 = BytesReceivedMonitor.BytesReceivedMonitor(3)
+    m4 = BytesSentMonitor.BytesSentMonitor(4)
+    monman1.add_monitor(m1)
+    monman1.add_monitor(m2)
+    monman1.add_monitor(m3)
+    monman1.add_monitor(m4)
+    client.set_monitor_manager(monman1)
     client.register_to_name_server()
     client.begin_monitoring()
 

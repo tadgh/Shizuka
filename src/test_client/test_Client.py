@@ -26,6 +26,7 @@ class TestMonitorManager(unittest.TestCase):
     def test_empty_client_has_no_monitors(self):
         self.assertIsNone(self.client.list_monitors())
 
+    #TODO move this to connectivity Tests
     def test_registration_to_name_server_succeeds(self):
         self.client.register_to_name_server()
         print(threading.enumerate())
