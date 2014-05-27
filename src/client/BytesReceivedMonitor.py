@@ -12,6 +12,7 @@ class BytesReceivedMonitor(Monitor):
     def __init__(self, identifier):
         Monitor.__init__(self, identifier)
         logging.info("Initializing Bytes Received Monitor")
+        self._casual_name = "Network Received Monitor"
         self._minimum = 0.0
         self._maximum = sys.maxsize
         logging.info("Minimum: {}, Current: {}, Maximum: {} ".format(self._minimum, self.poll(), self._maximum))

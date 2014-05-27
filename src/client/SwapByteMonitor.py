@@ -11,6 +11,7 @@ class SwapByteMonitor(Monitor):
     def __init__(self, identifier):
         Monitor.__init__(self, identifier)
         logging.info("Initializing Swap MB Usage Monitor")
+        self._casual_name = "Swap Memory Monitor"
         memory_object = psutil.swap_memory()
         self._minimum = 0.0
         self._maximum = memory_object.total

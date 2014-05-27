@@ -24,12 +24,10 @@ class Notifier:
             logging.warning("Server being re-assigned. : {} ".format(server_name))
         self._reporting_server = reporting_server
 
-
     # Gets new data from the DataManager Singleton
     # @return a dictionary of all polled results from the local computer.
     def get_polled_data(self):
         return self._data_manager.poll_all()
-
 
     ## Notifies the server object (A pyro proxy) of any new data.
     # @param polled_data A dictionary of data to be passed to the server.
@@ -38,10 +36,11 @@ class Notifier:
     def post_to_server(self, polled_data):
         if self._reporting_server is not None:
             try:
-                data_was_received = self._reporting_server.notify(polled_data)
+                #todo gotta figure out best way to get the client ID in there.
+                outgoing_message = {"client_id": "test", "polled_data": polled_data}
+                data_was_received = self._reporting_server.notify(outgoing_message)
             except AttributeError as e:
-                logging.error("Appears as though calling the remote notify() method on the server has failed",
-                              "attempting to reconnect.")
+                logging.error("Appears as though calling the remote notify() method on the server has failed attempting to reconnect.: {}".format(e))
                 raise ServerNotFoundError
         else:
             logging.error("NO ASSOCIATED SERVER FOUND")
@@ -67,10 +66,11 @@ class Notifier:
         poll_and_notify_thread.setDaemon(True)
         poll_and_notify_thread.start()
 
+    #Called when unable to execute methods on remote server. Continuously attempts re-connection to Server and attempts
+    # ping. When it succeeds, it sets the server and returns control to where it was called.
     def reconnect_to_server(self):
         disconnected = True
         while disconnected:
-            print("THINGS!")
             try:
                 name_server = Pyro4.locateNS()
                 server_dict = name_server.list(prefix="shizuka.server.")
@@ -90,7 +90,6 @@ class Notifier:
             except Pyro4.errors.NamingError as e:
                 logging.error("Unable to find NameServer for Pyro4. Is it running? Error message: {}".format(str(e)))
             time.sleep(5)
-        print("EXITING!!!!")
 
 
 

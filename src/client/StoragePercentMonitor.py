@@ -10,6 +10,7 @@ class StoragePercentMonitor(Monitor):
     def __init__(self, identifier, drive_root):
         Monitor.__init__(self, identifier)
         logging.info("Initializing Storage Percent Monitor")
+        self._casual_name = "Storage % Monitor ({})".format(drive_root)
         self._drive_root = drive_root
         self._minimum = 0.0
         self._maximum = 100.0

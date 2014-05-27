@@ -5,6 +5,7 @@ import Notifier
 import MonitorManager
 import socket
 import random
+import DriveDiscovery
 ## The class that communicates with the server. This will need to be made into a Pyro4 Daemon, with a thread running the
 # polling duties, and another simply for communicating to the server.
 #
@@ -79,7 +80,8 @@ def main():
     import RamPercentMonitor
     import BytesSentMonitor
     import BytesReceivedMonitor
-
+    import StorageByteMonitor
+    import StoragePercentMonitor
     cid = random.randint(0, 10000)
     logging.basicConfig(level=logging.INFO)
     client = Client(cid)
@@ -88,6 +90,11 @@ def main():
     m2 = RamPercentMonitor.RAMPercentMonitor(2)
     m3 = BytesReceivedMonitor.BytesReceivedMonitor(3)
     m4 = BytesSentMonitor.BytesSentMonitor(4)
+    i = 5
+    for mount_point in DriveDiscovery.get_drive_mountpoints():
+        monman1.add_monitor(StoragePercentMonitor.StoragePercentMonitor(i, mount_point))
+        monman1.add_monitor(StorageByteMonitor.StorageByteMonitor(i+1, mount_point))
+        i += 2
     monman1.add_monitor(m1)
     monman1.add_monitor(m2)
     monman1.add_monitor(m3)

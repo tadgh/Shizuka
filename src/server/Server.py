@@ -5,7 +5,6 @@ import time
 import Pyro4.errors
 import Pyro4.naming
 
-logging.basicConfig(level=logging.INFO)
 
 ## Class responsible for the aggregation of all clients.
 class Server:
@@ -19,20 +18,18 @@ class Server:
     def poll_for_clients_continuously(self):
         while True:
             self.poll_for_clients()
-            time.sleep(5)
+            time.sleep(10)
 
     def poll_for_clients(self):
         logging.info("Checking Name Server...")
         try:
             for client_identifier, client_uri in self._ns.list(regex="shizuka\.client\..*").items():
-                logging.info("Found client with Identifier:{}".format(client_identifier))
                 if client_uri not in self._clients.keys():
                     client = Pyro4.Proxy(client_uri)
                     self._clients[client_uri] = client
-                    logging.info("Added Client: {}".format(client_identifier))
+                    logging.info("Added New Client: {}".format(client_identifier))
         except Pyro4.errors.NamingError:
             logging.error("Could not find Name Server!")
-
 
     ## Method that kicks off the client-polling using the nameserver found during initialization. Finds objects in the
     # naming server that start with "shizuka.client."
@@ -50,7 +47,6 @@ class Server:
                     daemon = Pyro4.Daemon()
                     server_uri = daemon.register(self)
                     ##todo determine how to properly name server
-
                     try:
                         self._ns.register("shizuka.server.instance", server_uri)
                         logging.info("Registered Shizuka Server to the name server. ")
@@ -61,19 +57,22 @@ class Server:
             #request_loop_thread.setDaemon(True)
             request_loop_thread.start()
 
-    #Simple lightweight method that allows a client to verify its connection. This will only be called by clients.
-    # @return True, indicating successful connection.
-    def ping(self):
-        print("GOT PINGED!")
-        return True
-
     #Called remotely by clients to pass dicts of data through.
     # @param data A dictionary containing all relevant polling data for the client.
     def notify(self, data):
         print("Received some data from client...\n{}".format(data))
         return True
 
+    #Simple lightweight method that allows a client to verify its connection. This will only be called by clients.
+    # @return True, indicating successful connection.
+    def ping(self):
+        logging.info("GOT PINGED!")
+        return True
+
+
 if __name__=="__main__":
+
+    logging.basicConfig(level=logging.INFO)
     server = Server()
     server.register_to_name_server()
     server.run()

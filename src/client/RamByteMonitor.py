@@ -10,6 +10,7 @@ class RamByteMonitor(Monitor):
 
     def __init__(self, identifier):
         Monitor.__init__(self, identifier)
+        self._casual_name = "RAM Monitor"
         logging.info("Initializing RAM MB Usage Monitor")
         memory_object = psutil.virtual_memory()
         self._minimum = 0.0

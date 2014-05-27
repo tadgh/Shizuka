@@ -9,6 +9,7 @@ class RAMPercentMonitor(Monitor):
 
     def __init__(self, identifier):
         Monitor.__init__(self, identifier)
+        self._casual_name = "RAM % Monitor"
         logging.info("Initializing RAM Percent Monitor")
         logging.info("Minimum: {}, Current: {}, Maximum: {}".format(0.0, self.poll(), 100.0))
 

@@ -9,6 +9,7 @@ class StorageByteMonitor(Monitor):
 
     def __init__(self, identifier, drive_root):
         Monitor.__init__(self, identifier)
+        self._casual_name = "Storage Monitor ({})".format(drive_root)
         logging.info("Initializing Storage Byte Monitor")
         self._drive_root = drive_root
         self._minimum = 0.0
@@ -22,7 +23,7 @@ class StorageByteMonitor(Monitor):
     #  @return Float indicating the bytes of storage currently in use
     def poll(self):
         storage_object = psutil.disk_usage(self._drive_root)
-        in_use = storage_object.percent
+        in_use = storage_object.used
         return float(in_use)
 
     def minimum(self):
