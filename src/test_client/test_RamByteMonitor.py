@@ -5,7 +5,7 @@ import RamByteMonitor
 class TestRamByteMonitor(unittest.TestCase):
 
     def setUp(self):
-        self.ram_mb_monitor = RamByteMonitor.RamByteMonitor(1)
+        self.ram_mb_monitor = RamByteMonitor.RamByteMonitor()
 
     def test_monitor_not_paused(self):
         paused = self.ram_mb_monitor.is_paused()

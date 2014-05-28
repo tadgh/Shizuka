@@ -16,7 +16,7 @@ class TestNotifier(unittest.TestCase):
     def setUp(self):
         self._data_manager = DataManager.DataManager()
         self._monitor_manager = MonitorManager.MonitorManager()
-        self._monitor_1 = RamByteMonitor.RamByteMonitor(1)
+        self._monitor_1 = RamByteMonitor.RamByteMonitor()
         self._monitor_manager.add_monitor(self._monitor_1)
 
         self._notifier = Notifier.Notifier()
@@ -39,11 +39,6 @@ class TestNotifier(unittest.TestCase):
             results = self._notifier.get_polled_data()
             transmission_result = self._notifier.post_to_server(results)
             self.assertTrue(transmission_result)
-
-
-
-
-
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 import psutil
 import logging
+import Constants
 from Monitor import Monitor
 
 ## Polls PSUtil to get a byte value for used storage on a particular drive.
@@ -7,9 +8,8 @@ from Monitor import Monitor
 #
 class StorageByteMonitor(Monitor):
 
-    def __init__(self, identifier, drive_root):
-        Monitor.__init__(self, identifier)
-        self._casual_name = "Storage Monitor ({})".format(drive_root)
+    def __init__(self, drive_root):
+        Monitor.__init__(self, "{0} {1}".format(Constants.STORAGE_BYTE_MONITOR, str(drive_root)))
         logging.info("Initializing Storage Byte Monitor")
         self._drive_root = drive_root
         self._minimum = 0.0

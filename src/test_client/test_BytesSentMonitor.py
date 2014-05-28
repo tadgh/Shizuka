@@ -5,7 +5,7 @@ import BytesSentMonitor
 class TestBytesSentMonitor(unittest.TestCase):
 
     def setUp(self):
-        self.bytes_sent_monitor = BytesSentMonitor.BytesSentMonitor(1)
+        self.bytes_sent_monitor = BytesSentMonitor.BytesSentMonitor()
 
     def test_monitor_not_paused(self):
         paused = self.bytes_sent_monitor.is_paused()

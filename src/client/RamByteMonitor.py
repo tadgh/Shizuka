@@ -1,16 +1,15 @@
 import psutil
 import logging
+import Constants
 from Monitor import Monitor
-
 
 ## Polls PSUtil to get a byte value for RAM currently in use.
 #
 #
 class RamByteMonitor(Monitor):
 
-    def __init__(self, identifier):
-        Monitor.__init__(self, identifier)
-        self._casual_name = "RAM Monitor"
+    def __init__(self):
+        Monitor.__init__(self, Constants.RAM_BYTE_MONITOR)
         logging.info("Initializing RAM MB Usage Monitor")
         memory_object = psutil.virtual_memory()
         self._minimum = 0.0

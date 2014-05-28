@@ -28,14 +28,3 @@ class DataManager():
         logging.info("Forthcoming Are all results from the Monitor Manager: \n***\n" +
                      "\n".join([str(key) + str(value) for key,value in  all_results.items()]) + "\n***")
         return all_results
-
-    ## Polls a specific monitor held by the monitor manager.
-    # @return Float value of the resource being monitored.
-    #
-    def poll_monitor_by_id(self, monitor_id):
-        try:
-            monitor = MonitorManager.MonitorManager().list_monitors()[monitor_id]
-            return monitor.poll()
-        except KeyError:
-            logging.error("Could not poll monitor with ID:{} as it was not found in the monitor list".format(monitor_id))
-            return None

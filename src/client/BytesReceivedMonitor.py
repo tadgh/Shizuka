@@ -1,6 +1,7 @@
 import sys
 import time
 import logging
+import Constants
 from Monitor import Monitor
 import psutil
 
@@ -9,8 +10,8 @@ import psutil
 logging.basicConfig(level=logging.INFO)
 class BytesReceivedMonitor(Monitor):
 
-    def __init__(self, identifier):
-        Monitor.__init__(self, identifier)
+    def __init__(self):
+        Monitor.__init__(self, Constants.BYTES_RECEIVED_MONITOR)
         logging.info("Initializing Bytes Received Monitor")
         self._casual_name = "Network Received Monitor"
         self._minimum = 0.0

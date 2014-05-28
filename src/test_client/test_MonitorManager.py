@@ -1,7 +1,7 @@
 import unittest
 import MonitorManager
 import RamByteMonitor
-import RamPercentMonitor
+import Constants
 import logging
 
 
@@ -15,21 +15,15 @@ class TestMonitorManager(unittest.TestCase):
         self.manager = MonitorManager.MonitorManager()
 
     def test_adding_monitor_to_manager(self):
-        monitor_1 = RamByteMonitor.RamByteMonitor(1)
+        monitor_1 = RamByteMonitor.RamByteMonitor()
         self.manager.add_monitor(monitor_1)
-        self.assertTrue(1 in self.manager.monitor_list.keys(), "uh oh, guess its not in the keys,.")
-
-    def test_monitor_properly_deleted_through_id_deletion(self):
-        monitor_1 = RamPercentMonitor.RAMPercentMonitor(1)
-        self.manager.add_monitor(monitor_1)
-        self.manager.remove_monitor_by_id(1)
-        self.assertFalse(1 in self.manager.monitor_list.keys(), "Monitor not Properly Deleted, found ID in the keys.")
+        self.assertTrue(Constants.RAM_BYTE_MONITOR in self.manager.monitor_list.keys(), "uh oh, guess its not in the keys,.")
 
     def test_monitor_properly_deleted_through_object_deletion(self):
-        monitor_1 = RamPercentMonitor.RAMPercentMonitor(1)
+        monitor_1 = RamByteMonitor.RamByteMonitor()
         self.manager.add_monitor(monitor_1)
         self.manager.remove_monitor(monitor_1)
-        self.assertFalse(1 in self.manager.monitor_list.keys(), "Not Properly Deleted, found ID in the keys.")
+        self.assertFalse(Constants.RAM_BYTE_MONITOR in self.manager.monitor_list.keys(), "Not Properly Deleted, found ID in the keys.")
 
     def test_empty_list_raises_error(self):
         self.assertRaises(KeyError, self.manager.remove_monitor_by_id(1))

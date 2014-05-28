@@ -77,28 +77,23 @@ class Client:
 
 def main():
     import RamByteMonitor
-    import RamPercentMonitor
     import BytesSentMonitor
     import BytesReceivedMonitor
     import StorageByteMonitor
-    import StoragePercentMonitor
     cid = random.randint(0, 10000)
     logging.basicConfig(level=logging.INFO)
     client = Client(cid)
     monman1 = MonitorManager.MonitorManager()
-    m1 = RamByteMonitor.RamByteMonitor(1)
-    m2 = RamPercentMonitor.RAMPercentMonitor(2)
-    m3 = BytesReceivedMonitor.BytesReceivedMonitor(3)
-    m4 = BytesSentMonitor.BytesSentMonitor(4)
-    i = 5
+    m1 = RamByteMonitor.RamByteMonitor()
+    m2 = BytesReceivedMonitor.BytesReceivedMonitor()
+    m3 = BytesSentMonitor.BytesSentMonitor()
+
     for mount_point in DriveDiscovery.get_drive_mountpoints():
-        monman1.add_monitor(StoragePercentMonitor.StoragePercentMonitor(i, mount_point))
-        monman1.add_monitor(StorageByteMonitor.StorageByteMonitor(i+1, mount_point))
-        i += 2
+        monman1.add_monitor(StorageByteMonitor.StorageByteMonitor(mount_point))
+
     monman1.add_monitor(m1)
     monman1.add_monitor(m2)
     monman1.add_monitor(m3)
-    monman1.add_monitor(m4)
     client.set_monitor_manager(monman1)
     client.register_to_name_server()
     client.begin_monitoring()

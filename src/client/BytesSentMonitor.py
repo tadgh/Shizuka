@@ -2,6 +2,7 @@ import psutil
 import sys
 import time
 import logging
+import Constants
 from Monitor import Monitor
 
 ## Polls PSUtil to get a value for the amount of bytes sent per second (B/s).
@@ -10,8 +11,8 @@ logging.basicConfig(level=logging.INFO)
 class BytesSentMonitor(Monitor):
 
 
-    def __init__(self, identifier):
-        Monitor.__init__(self, identifier)
+    def __init__(self):
+        Monitor.__init__(self, Constants.BYTES_SENT_MONITOR)
         logging.info("Initializing Bytes Sent Monitor")
         self._casual_name = "Network Sent Monitor"
         self._minimum = 0.0

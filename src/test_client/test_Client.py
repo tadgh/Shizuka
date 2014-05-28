@@ -2,7 +2,6 @@ import threading
 import unittest
 import MonitorManager
 import RamByteMonitor
-import RamPercentMonitor
 import Client
 import logging
 
