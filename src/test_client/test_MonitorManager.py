@@ -1,7 +1,6 @@
 import unittest
 import MonitorManager
 import RamByteMonitor
-import RamPercentMonitor
 import logging
 
 
@@ -20,13 +19,13 @@ class TestMonitorManager(unittest.TestCase):
         self.assertTrue(1 in self.manager.monitor_list.keys(), "uh oh, guess its not in the keys,.")
 
     def test_monitor_properly_deleted_through_id_deletion(self):
-        monitor_1 = RamPercentMonitor.RAMPercentMonitor(1)
+        monitor_1 = RamByteMonitor.RamByteMonitor(1)
         self.manager.add_monitor(monitor_1)
         self.manager.remove_monitor_by_id(1)
         self.assertFalse(1 in self.manager.monitor_list.keys(), "Monitor not Properly Deleted, found ID in the keys.")
 
     def test_monitor_properly_deleted_through_object_deletion(self):
-        monitor_1 = RamPercentMonitor.RAMPercentMonitor(1)
+        monitor_1 = RamByteMonitor.RamByteMonitor(1)
         self.manager.add_monitor(monitor_1)
         self.manager.remove_monitor(monitor_1)
         self.assertFalse(1 in self.manager.monitor_list.keys(), "Not Properly Deleted, found ID in the keys.")

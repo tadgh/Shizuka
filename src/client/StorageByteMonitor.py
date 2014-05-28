@@ -13,10 +13,8 @@ class StorageByteMonitor(Monitor):
         logging.info("Initializing Storage Byte Monitor")
         self._drive_root = drive_root
         self._minimum = 0.0
-
         storage_object = psutil.disk_usage(self._drive_root)
         self._maximum = float(storage_object.total)
-
         logging.info("Minimum: {}, Current: {}, Maximum: {} ".format(self._minimum, self.poll(), self._maximum))
 
     ## Gets Storage % in use by means of PSUtil's disk_usage() method.
