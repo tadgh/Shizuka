@@ -6,13 +6,12 @@ import MonitorManager
 import socket
 import random
 import Utils
+
+
 ## The class that communicates with the server. This will need to be made into a Pyro4 Daemon, with a thread running the
 # polling duties, and another simply for communicating to the server.
 #
 # Holds onto a monitor manager as well as the command executor and notifier. A facade class to the underlying objects.
-import Utils
-
-
 class Client:
     def __init__(self):
         self._client_id = "shizuka.client.{}".format(socket.gethostname())
@@ -28,15 +27,21 @@ class Client:
         self._monitor_manager = monitor_manager
 
     ## Sets the process responsible for executing commands on the host computer.
+    #
+    # @param command_executor the CommandInterface object for receiving command objects.
     def set_command_executor(self, command_executor):
         self._command_executor = command_executor
 
-    #Fires off the command to the notifier to start polling the hardware and sending the data to the server.
+    ## Fires off the command to the notifier to start polling the hardware and sending the data to the server.
+    #
+    #
     def begin_monitoring(self):
         logging.info("Client has started the notifier's loop.")
         self._notifier.run()
 
-    # Returns the monitor_list variable from the monitor_manager.
+    ## Returns the monitor_list variable from the monitor_manager.
+    #
+    # @return list of monitors that have been added.
     def list_monitors(self):
         if self._monitor_manager is not None:
             return self._monitor_manager.list_monitors()

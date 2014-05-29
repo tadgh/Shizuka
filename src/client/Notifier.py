@@ -67,7 +67,7 @@ class Notifier:
         poll_and_notify_thread.setDaemon(True)
         poll_and_notify_thread.start()
 
-    #Called when unable to execute methods on remote server. Continuously attempts re-connection to Server and attempts
+    ## Called when unable to execute methods on remote server. Continuously attempts re-connection to Server and attempts
     # ping. When it succeeds, it sets the server and returns control to where it was called.
     def reconnect_to_server(self):
         disconnected = True

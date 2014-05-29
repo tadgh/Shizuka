@@ -51,6 +51,7 @@ class MonitorManager():
         except KeyError:
             logging.error("Could not find Monitor:{} in the monitor list. Has it already been removed?".format(monitor))
 
+    ## Returns list of monitors currently held, otherwise Empty List.
     def list_monitors(self):
         return self._instance.monitor_list
 
