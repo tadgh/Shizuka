@@ -20,14 +20,25 @@ class Server:
             self.poll_for_clients()
             time.sleep(10)
 
+
+
     def poll_for_clients(self):
         logging.info("Checking Name Server...")
         try:
             for client_identifier, client_uri in self._ns.list(regex="shizuka\.client\..*").items():
-                if client_uri not in self._clients.keys():
+                #this is the case where we've never seen this client before.
+                if client_identifier not in self._clients.keys():
                     client = Pyro4.Proxy(client_uri)
-                    self._clients[client_uri] = client
-                    logging.info("Added New Client: {}".format(client_identifier))
+                    self._clients[client_identifier] = [client_uri, client]
+                    logging.info("Added New Client: {} --> {}".format(client_identifier, client_uri))
+                #this down here is the case where the client has disconnected, reconnected, and gotten a new URI.
+                #This requires us to change the associated proxy as well as URI.
+                elif self._clients[client_identifier][0] != client_uri:
+                    client = Pyro4.Proxy(client_uri)
+                    self._clients[client_identifier] = [client_uri, client]
+                    logging.info("Client has shown up under a new URI. Modified our "
+                                 "dictionary to reflect it: {} --> {}".format(client_identifier, client_uri))
+
         except Pyro4.errors.NamingError:
             logging.error("Could not find Name Server!")
 
@@ -68,6 +79,9 @@ class Server:
     def ping(self):
         logging.info("GOT PINGED!")
         return True
+
+    def execute_command(self, target_client, command_tag):
+        pass
 
 
 if __name__=="__main__":
