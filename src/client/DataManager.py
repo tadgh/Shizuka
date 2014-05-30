@@ -23,7 +23,7 @@ class DataManager():
         all_results = {}
 
         for monitor_id, monitor in MonitorManager.MonitorManager().list_monitors().items():
-            all_results[monitor_id] = [monitor.get_name(),monitor.minimum(), monitor.poll(), monitor.maximum()]
+            all_results[monitor.get_id()] = [monitor.minimum(), monitor.poll(), monitor.maximum()]
 
         logging.info("Forthcoming Are all results from the Monitor Manager: \n***\n" +
                      "\n".join([str(key) + str(value) for key,value in  all_results.items()]) + "\n***")

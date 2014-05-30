@@ -14,7 +14,6 @@ class Monitor:
 
     def __init__(self, identifier):
         self.paused = False
-        self._casual_name = None
         self._id = identifier
 
     def togglePause(self):
@@ -23,11 +22,11 @@ class Monitor:
     def is_paused(self):
         return self.paused
 
+    ## Returns the name that the monitor holds as a key when passing data to the server.
+    # @return self._id
     def get_id(self):
         return self._id
 
-    def get_name(self):
-        return self._casual_name
 
     ## @var paused
     # a boolean indicating whether the monitor is paused or not.

@@ -1,18 +1,18 @@
 import logging
 import threading
 import Pyro4
-import Notifier
+import CommandInterface
 import MonitorManager
+import Notifier
 import socket
 import random
 import Utils
+
+
 ## The class that communicates with the server. This will need to be made into a Pyro4 Daemon, with a thread running the
 # polling duties, and another simply for communicating to the server.
 #
 # Holds onto a monitor manager as well as the command executor and notifier. A facade class to the underlying objects.
-import Utils
-
-
 class Client:
     def __init__(self):
         self._client_id = "shizuka.client.{}".format(socket.gethostname())
@@ -28,21 +28,31 @@ class Client:
         self._monitor_manager = monitor_manager
 
     ## Sets the process responsible for executing commands on the host computer.
+    #
+    # @param command_executor the CommandInterface object for receiving command objects.
     def set_command_executor(self, command_executor):
         self._command_executor = command_executor
 
-    #Fires off the command to the notifier to start polling the hardware and sending the data to the server.
+    ## Fires off the command to the notifier to start polling the hardware and sending the data to the server.
+    #
+    #
     def begin_monitoring(self):
         logging.info("Client has started the notifier's loop.")
         self._notifier.run()
 
-    # Returns the monitor_list variable from the monitor_manager.
+    ## Returns the monitor_list variable from the monitor_manager.
+    #
+    # @return list of monitors that have been added.
     def list_monitors(self):
         if self._monitor_manager is not None:
             return self._monitor_manager.list_monitors()
         else:
             logging.error("Could not gather data. No monitor manager is set.")
             return None
+
+    def execute_command(self, command):
+        logging.info("Passing command: '{}' off to command executor".format(command))
+        return self._command_executor.execute_command(command)
         
     #Starts a new thread that continuously attempts to find the nameserver. Once found, it registers the client with its
     #hostname, which is shizuka.client.[hostname] . It then begins the request loop waiting for requests.
@@ -76,6 +86,8 @@ def main():
     logging.basicConfig(level=logging.INFO)
     client = Client()
     monman1 = MonitorManager.MonitorManager()
+    cexec = CommandInterface.CommandInterface()
+
     m1 = RamByteMonitor.RamByteMonitor()
     m2 = BytesReceivedMonitor.BytesReceivedMonitor()
     m3 = BytesSentMonitor.BytesSentMonitor()
@@ -87,6 +99,7 @@ def main():
     monman1.add_monitor(m2)
     monman1.add_monitor(m3)
     client.set_monitor_manager(monman1)
+    client.set_command_executor(cexec)
     client.register_to_name_server()
     client.begin_monitoring()
 

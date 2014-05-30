@@ -14,7 +14,8 @@ class Notifier:
     def __init__(self, client_identifier):
         self._data_manager = DataManager.DataManager()
         self._reporting_server = None
-        self.reconnect_to_server()
+        #commenting the initial connection out so that we don't need the server running to start up and regsiter the client.
+        #self.reconnect_to_server()
         self._client_identifier = client_identifier
 
     ## Associate a reporting server here. Without one, no data is reported to the server.
@@ -67,7 +68,7 @@ class Notifier:
         poll_and_notify_thread.setDaemon(True)
         poll_and_notify_thread.start()
 
-    #Called when unable to execute methods on remote server. Continuously attempts re-connection to Server and attempts
+    ## Called when unable to execute methods on remote server. Continuously attempts re-connection to Server and attempts
     # ping. When it succeeds, it sets the server and returns control to where it was called.
     def reconnect_to_server(self):
         disconnected = True
