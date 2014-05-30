@@ -1,6 +1,8 @@
 from Command import Command
 import subprocess
 import Constants
+import logging
+
 
 
 ## Command that executes a restart operation on the client computer.

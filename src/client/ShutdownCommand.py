@@ -1,6 +1,7 @@
 from Command import Command
 import Constants
 import subprocess
+import logging
 
 
 ## Command that executes a shutdown operation on the client computer.

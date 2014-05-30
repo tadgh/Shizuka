@@ -24,13 +24,16 @@ class CommandInterface():
     #  @return The results from the call(if any). None is returned if the call is not allowed.
     def execute_command(self, command_tag):
         try:
-            results = self._allowed_commands[command_tag].execute()
             logging.info("Executing Command: {}".format(command_tag))
+            results = self._allowed_commands[command_tag].execute()
             return results
         except KeyError:
             logging.error("""Command {} not found in the client's list of allowed commands.
                            Here is what is allowed: {}""".format(command_tag, self._allowed_commands.keys()))
             return None
+        except Exception as e:
+            logging.error("Unknown error while executing Command: {}".format(e))
+
     ## Server request to add a monitor object
     #  @param monitor The monitor to be added
     #

@@ -1,8 +1,9 @@
 import logging
 import threading
 import Pyro4
-import Notifier
+import CommandInterface
 import MonitorManager
+import Notifier
 import socket
 import random
 import Utils
@@ -48,6 +49,10 @@ class Client:
         else:
             logging.error("Could not gather data. No monitor manager is set.")
             return None
+
+    def execute_command(self, command):
+        logging.info("Passing command: '{}' off to command executor".format(command))
+        return self._command_executor.execute_command(command)
         
     #Starts a new thread that continuously attempts to find the nameserver. Once found, it registers the client with its
     #hostname, which is shizuka.client.[hostname] . It then begins the request loop waiting for requests.
@@ -81,6 +86,8 @@ def main():
     logging.basicConfig(level=logging.INFO)
     client = Client()
     monman1 = MonitorManager.MonitorManager()
+    cexec = CommandInterface.CommandInterface()
+
     m1 = RamByteMonitor.RamByteMonitor()
     m2 = BytesReceivedMonitor.BytesReceivedMonitor()
     m3 = BytesSentMonitor.BytesSentMonitor()
@@ -92,6 +99,7 @@ def main():
     monman1.add_monitor(m2)
     monman1.add_monitor(m3)
     client.set_monitor_manager(monman1)
+    client.set_command_executor(cexec)
     client.register_to_name_server()
     client.begin_monitoring()
 

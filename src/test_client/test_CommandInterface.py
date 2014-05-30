@@ -15,7 +15,7 @@ class TestCommandInterface(unittest.TestCase):
 
     def test_some_command_returns_successfully(self):
         results = self.commandInterface.execute_command(Constants.NETWORK_INFO_TAG)
-        self.assertTrue(isinstance(results, bytes) and isinstance(results.decode('utf-8'), str))
+        self.assertTrue(isinstance(results, str))
 
 
 if __name__ == "__main__":

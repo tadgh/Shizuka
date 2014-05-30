@@ -15,11 +15,14 @@ class Server:
                     logging.error("Could not find Name Server!")
         self._clients = {}
 
+    ## Method that simply continues to poll, is started on a thread, typically.
     def poll_for_clients_continuously(self):
         while True:
             self.poll_for_clients()
             time.sleep(10)
 
+    ## In case the nameserver goes offline, we attempt to reconnect to it.
+    def locate_nameserver(self):
 
 
     def poll_for_clients(self):
@@ -80,8 +83,25 @@ class Server:
         logging.info("GOT PINGED!")
         return True
 
+    ## Attempts to perform some shell command on a remote client.
+    # @param target_client The given name of a client, i.e; shizuka.client.myfancyclient
+    # @param command_tag The command tag associated with the command object that you want to execute. See Constants for the different tags.
     def execute_command(self, target_client, command_tag):
-        pass
+        try:
+            results = self._clients[target_client][1].execute_command(command_tag)
+        except KeyError as e:
+            logging.error("Could not find target client in the list. Are you sure it's been registered? Error: {}".format(e))
+            return "Could not find target client in the list. Are you sure it's been registered?"
+        except AttributeError as e1:
+            logging.error("Found client in list: {} , but could not execute command remotely. It is",
+                          " possible the URI has changed, or the client has gone offline. ".format(self._clients[target_client]))
+            return "Couldn't execute remote method on target. Is it offline?"
+        if results is None:
+            print("Call did not return any results. ")
+        else:
+            print("Returned information: {}".format(results))
+
+
 
 
 if __name__=="__main__":

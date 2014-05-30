@@ -13,12 +13,13 @@ class NetworkInfoCommand(Command):
 
     def windows_execute(self):
         logging.info("IPCONFIG called. ")
-        results = subprocess.check_output(["ipconfig", "/all"])
+        results = subprocess.check_output(["ipconfig", "/all"]).decode('utf-8')
+        print(results)
         return results
 
     def nix_execute(self):
         logging.info("IFCONFIG called. ")
-        results = subprocess.check_output(["ifconfig"])
+        results = subprocess.check_output(["ifconfig"]).decode("utf-8")
         return results
 
 
