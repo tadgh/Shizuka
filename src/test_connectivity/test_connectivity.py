@@ -1,6 +1,7 @@
 import threading
 import unittest
 import time
+import Notifier
 import Server
 import Pyro4.naming
 import Pyro4
@@ -12,11 +13,7 @@ import Pyro4.errors
 logging.basicConfig(level=logging.INFO)
 
 
-
-
 class TestConnectivity(unittest.TestCase):
-
-
 
     def setUp(self):
         self.server = Server.Server()
@@ -40,7 +37,17 @@ class TestConnectivity(unittest.TestCase):
         self.server.poll_for_clients()
         self.assertTrue(len(self.server._clients) > 0)
 
+    def test_client_registered_successfully(self):
+        self.client.register_to_name_server()
+        ns = Pyro4.locateNS()
+        print(ns.list(prefix=self.client._client_id))
 
+
+    def test_data_is_received_when_server_is_associated(self):
+            notifier = Notifier.Notifier("shizuka.client.Mulder")
+            results = notifier.get_polled_data()
+            transmission_result = notifier.post_to_server(results)
+            self.assertTrue(transmission_result)
 
 if __name__ == "__main__":
     unittest.main()

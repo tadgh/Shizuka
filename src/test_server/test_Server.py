@@ -14,7 +14,6 @@ class TestServer(unittest.TestCase):
 
     def setUp(self):
         self.server = Server.Server()
-        self.ns = Pyro4.locateNS()
 
     def tearDown(self):
         pass
@@ -22,11 +21,19 @@ class TestServer(unittest.TestCase):
     def test_server_starts_with_no_clients(self):
         self.assertTrue(len(self.server._clients) == 0)
 
-    #TODO move this to connectivity Tests
-    def test_adding_client_to_server(self):
-        self.ns.list()
-        client = Client.Client()
-        client.run()
+    def test_get_all_data_returns_all_data(self):
+        self.server.notify({"test": 1})
+        self.server.notify({"test2": 2})
+        res = self.server.get_all_data()
+        self.assertEqual(res, [{"test": 1},{"test2": 2}])
+
+    def test_server_returns_nothing_on_no_data(self):
+        res = self.server.get_all_data()
+        self.assertListEqual(res, [])
+
+
+
+
 
 
 

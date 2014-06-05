@@ -27,6 +27,9 @@ class TestStorageByteMonitor(unittest.TestCase):
                                                                                                      storage_in_use,
                                                                                                      maximum))
 
+    def test_exception_is_raised_on_dead_mount_point(self):
+        with self.assertRaises(OSError):
+            sbm = StorageByteMonitor.StorageByteMonitor("garbage_mount_point123:\\")
 
 
 

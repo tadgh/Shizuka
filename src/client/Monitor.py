@@ -12,9 +12,9 @@ import abc
 class Monitor:
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self, identifier):
+    def __init__(self, type):
         self.paused = False
-        self._id = identifier
+        self._type = type
 
     def togglePause(self):
         self.paused = not self.paused
@@ -24,8 +24,8 @@ class Monitor:
 
     ## Returns the name that the monitor holds as a key when passing data to the server.
     # @return self._id
-    def get_id(self):
-        return self._id
+    def get_type(self):
+        return self._type
 
 
     ## @var paused

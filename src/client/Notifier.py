@@ -14,8 +14,6 @@ class Notifier:
     def __init__(self, client_identifier):
         self._data_manager = DataManager.DataManager()
         self._reporting_server = None
-        #commenting the initial connection out so that we don't need the server running to start up and regsiter the client.
-        #self.reconnect_to_server()
         self._client_identifier = client_identifier
 
     ## Associate a reporting server here. Without one, no data is reported to the server.

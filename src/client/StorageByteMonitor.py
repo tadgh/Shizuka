@@ -29,8 +29,3 @@ class StorageByteMonitor(Monitor):
 
     def maximum(self):
         return self._maximum
-
-
-
-
-
