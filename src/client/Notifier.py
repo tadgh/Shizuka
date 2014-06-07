@@ -11,10 +11,16 @@ import time
 #
 # The notifier will be running on a seperate thread, and polling for new data on a defined interval.
 class Notifier:
-    def __init__(self, client_identifier):
+    def __init__(self, client_identifier, testing=False):
         self._data_manager = DataManager.DataManager()
         self._reporting_server = None
         self._client_identifier = client_identifier
+        #just a quick hack to allow me to run tests without using the connectivity aspect
+        if testing:
+            import Utils
+            self._reporting_server = Utils.mock_server()
+        else:
+            self.reconnect_to_server()
 
     ## Associate a reporting server here. Without one, no data is reported to the server.
     # @param reporting_server the pyro proxy object indicating the server to be associated.

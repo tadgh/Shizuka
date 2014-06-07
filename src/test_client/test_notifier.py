@@ -19,7 +19,7 @@ class TestNotifier(unittest.TestCase):
         self._monitor_1 = RamByteMonitor.RamByteMonitor()
         self._monitor_manager.add_monitor(self._monitor_1)
 
-        self._notifier = Notifier.Notifier("shizuka.client.Mulder")
+        self._notifier = Notifier.Notifier("shizuka.client.Mulder", testing=True)
         #self._server = Server.Server()
 
     def test_notifier_fails_to_send_when_server_is_not_associated(self):
@@ -30,12 +30,11 @@ class TestNotifier(unittest.TestCase):
         results = self._notifier.get_polled_data()
         self.assertIsInstance(results, dict)
 
-    def test_thread_starts_correctly(self):
-        self._notifier.run()
-        print(threading.enumerate())
-        #self.assertEquals(2, threading.active_count())
-
-
+    def test_data_is_received_when_server_is_associated(self):
+                notifier = Notifier.Notifier("shizuka.client.Mulder")
+                results = notifier.get_polled_data()
+                transmission_result = notifier.post_to_server(results)
+                self.assertTrue(transmission_result)
 
 
 if __name__ == "__main__":

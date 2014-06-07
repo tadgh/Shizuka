@@ -11,6 +11,7 @@ class Server:
     def __init__(self):
         self._ns = None
         self._all_data = []
+        self.all_messages = []
         self._clients = {}
 
     def get_all_data(self):
@@ -19,19 +20,17 @@ class Server:
         self.purge_data()
         return to_return
 
-
     ## Removes all data received from clients.
     def purge_data(self):
         logging.info("clearing all_data in the server... ")
         self._all_data.clear()
 
-
     ## In case the nameserver goes offline, we attempt to reconnect to it.
     def locate_nameserver(self):
-        disconnected = True
-        while disconnected:
+        while True:
             try:
                 name_server = Pyro4.locateNS()
+                return name_server
             except Pyro4.errors.NamingError as e:
                 logging.error("Unable to find NameServer for Pyro4. Is it running? Error message: {}".format(str(e)))
             except Exception as e:
@@ -44,6 +43,12 @@ class Server:
         while True:
             self.poll_for_clients()
             time.sleep(10)
+
+    ## Method meant for message communication from clients. Success reports/ Status reports, what have you.
+    # @param message The dictionary containing the message.
+    def send_message(self, message):
+        logging.info("Received message from client: {}".format(message))
+        self.all_messages.append(message)
 
     ## Checks the nameserver for instances of shizuka.client.CLIENT_NAME. If they are unknonw, adds them to client list.
     # If they are known, and the URI has changed, re-establish a new proxy with the new URI.
@@ -67,8 +72,6 @@ class Server:
             logging.error("Could not find Name Server! Attempting Reconnect...")
             self.locate_nameserver()
 
-    def add_client(self, client):
-
     ## Method that kicks off the client-polling using the nameserver found during initialization. Finds objects in the
     # naming server that start with "shizuka.client."
     def run(self):
@@ -78,9 +81,13 @@ class Server:
         polling_thread.start()
 
     ## Uses the nameserver to register itself so that clients can find it.
+    #TODO need to switch this to retry after a failed registration.
     def register_to_name_server(self):
+        logging.info("Trying to register to nameserver...")
+        self._ns = self.locate_nameserver()
         if self._ns:
             def request_loop():
+                logging.info("In registration thread...")
                 if self._ns:
                     daemon = Pyro4.Daemon()
                     server_uri = daemon.register(self)
@@ -91,11 +98,13 @@ class Server:
                         daemon.requestLoop()
                     except Exception as e:
                         logging.error("Registration error! Error Message: {}".format(str(e)))
+                else:
+                    logging.error("No Nameserver Found!")
             request_loop_thread = threading.Thread(target=request_loop)
             #request_loop_thread.setDaemon(True)
             request_loop_thread.start()
         else:
-            self.locate_nameserver()
+            logging.error("Failed to register to nameserver!!")
 
     #Called remotely by clients to pass dicts of data through.
     # @param data A dictionary containing all relevant polling data for the client.

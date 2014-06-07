@@ -31,6 +31,9 @@ class TestServer(unittest.TestCase):
         res = self.server.get_all_data()
         self.assertListEqual(res, [])
 
+    def test_message_passes_to_server_from_client(self):
+
+
 
 
 

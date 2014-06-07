@@ -6,16 +6,13 @@ import CPUPercentMonitor
 import BytesReceivedMonitor
 import BytesSentMonitor
 import SwapByteMonitor
+
 ## Singleton class that handles all monitors on the client.
 #
 # This class handles the addition and removal of monitors. Contains the factory
 #
-
-
-
 class MonitorManager():
     _instance = None
-
     ## Create a MonitorManager singleton.
     #
     #
@@ -23,6 +20,7 @@ class MonitorManager():
         if not isinstance(class_._instance, class_):
             class_._instance = object.__new__(class_, *args, **kwargs)
             class_._instance.monitor_list = {}
+            class_._instance._message_handler = None
             logging.info("Created a new Monitor Manager singleton...")
         return class_._instance
 
@@ -32,6 +30,17 @@ class MonitorManager():
     #
     def __init__(self):
         return
+
+    def set_message_handler(self, handler):
+        self._instance._message_handler = handler
+
+    ## Queues the message to be sent back to the server.
+    def send_message_to_server(self, message):
+        if self._instance._message_handler is not None:
+            logging.info("Sending message off to message_handler.")
+            self._instance._message_handler.post_to_server(message)
+        else:
+            logging.warning("No message handler is set in the monitor manager. Cannot send message: {}".format(message))
 
     ## Adds a monitor object to the dictionary of monitors running on the client
     #
@@ -60,6 +69,7 @@ class MonitorManager():
         except KeyError:
             logging.error("Could not find Monitor:{} in the monitor list. Has it already been removed?".format(monitor))
 
+    #Empty out all monitors.
     def clear_monitors(self):
         self._instance.monitor_list.clear()
 
@@ -68,20 +78,26 @@ class MonitorManager():
         return self._instance.monitor_list
 
     ## Handles a monitor configuration dictionary and delegates creation and deletion of monitors as necessary.
+    ## TODO maybe don't have the result set built here. Keep separate?
     def handle_config(self, config_dict):
-        new_monitors = []
+        results = {}
         try:
             for monitor_type in config_dict["add"]:
                 self.add_monitor(self.create_monitor(monitor_type))
+                results[monitor_type] = "Added" if monitor_type in self.list_monitors().keys() else "Failed to add"
             for monitor_type in config_dict["remove"]:
                 self.remove_monitor_by_type(monitor_type)
+                results[monitor_type] = "Removed" if monitor_type not in self.list_monitors().keys() else "Failed to remove"
         except Exception as e:
-            print("Unknown Error Occurred: {}".format(e))
+            print("Unknown Error Occurred Modifying the monitor list!: {}".format(e))
+
+        self.send_message_to_server(results)
 
     ## Monitor factory based on type.
     # @param monitor_type the TYPE of the monitor, can be found in Constants.py
     # @return the correct subclass of monitor based on the type passed in
-    def create_monitor(self, monitor_type):
+    @staticmethod
+    def create_monitor(monitor_type):
         if monitor_type == Constants.RAM_BYTE_MONITOR:
             return RamByteMonitor.RamByteMonitor()
         elif monitor_type == Constants.BYTES_RECEIVED_MONITOR:

@@ -81,12 +81,16 @@ def main():
     import BytesSentMonitor
     import BytesReceivedMonitor
     import StorageByteMonitor
+    import MessageHandler
+    import Notifier
 
     cid = random.randint(0, 10000)
     logging.basicConfig(level=logging.INFO)
     client = Client()
     monman1 = MonitorManager.MonitorManager()
     cexec = CommandInterface.CommandInterface()
+    notifier = Notifier.Notifier("shizuka.client.Mulder")
+    messagehandler = MessageHandler.MessageHandler("shizuka.client.Mulder")
 
     m1 = RamByteMonitor.RamByteMonitor()
     m2 = BytesReceivedMonitor.BytesReceivedMonitor()
