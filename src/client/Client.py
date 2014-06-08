@@ -20,12 +20,17 @@ class Client:
         self._monitor_manager = None
         self._command_executor = None
         #TODO is there a better way to start a new notifier?
-        self._notifier = Notifier.Notifier(self._client_id)
+        self._notifier = None
 
 
     ## Sets a list of monitors to be run on this client, via a monitor manager.
     def set_monitor_manager(self, monitor_manager):
         self._monitor_manager = monitor_manager
+
+    ## Sets the data notifier for the client
+    def set_notifier(self, notifier):
+        self._notifier = notifier
+
 
     ## Sets the process responsible for executing commands on the host computer.
     #
@@ -38,7 +43,7 @@ class Client:
     #
     def begin_monitoring(self):
         logging.info("Client has started the notifier's loop.")
-        self._notifier.run()
+        self._notifier.start()
 
     ## Returns the monitor_list variable from the monitor_manager.
     #
@@ -89,7 +94,7 @@ def main():
     client = Client()
     monman1 = MonitorManager.MonitorManager()
     cexec = CommandInterface.CommandInterface()
-    notifier = Notifier.Notifier("shizuka.client.Mulder")
+    notifier = Notifier.Notifier("shizuka.client.Aristotle")
     messagehandler = MessageHandler.MessageHandler("shizuka.client.Mulder")
 
     m1 = RamByteMonitor.RamByteMonitor()
@@ -104,6 +109,7 @@ def main():
     monman1.add_monitor(m3)
     client.set_monitor_manager(monman1)
     client.set_command_executor(cexec)
+    client.set_notifier(notifier)
     client.register_to_name_server()
     client.begin_monitoring()
 

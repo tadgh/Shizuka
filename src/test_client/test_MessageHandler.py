@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO)
 class TestMessageHandler(unittest.TestCase):
 
     def setUp(self):
-        self.handler = MessageHandler.MessageHandler("shizuka.client.Mulder")
+        self.handler = MessageHandler.MessageHandler("shizuka.client.Mulder", testing=True)
         #have to manually wipe monitors in between tests because this singleton stubbornly holds onto data.
 
     def test_message_queue_starts_empty(self):

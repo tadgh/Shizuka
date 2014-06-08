@@ -31,11 +31,14 @@ class TestNotifier(unittest.TestCase):
         self.assertIsInstance(results, dict)
 
     def test_data_is_received_when_server_is_associated(self):
-                notifier = Notifier.Notifier("shizuka.client.Mulder")
-                results = notifier.get_polled_data()
-                transmission_result = notifier.post_to_server(results)
+                results = self._notifier.get_polled_data()
+                transmission_result = self._notifier.post_to_server(results)
                 self.assertTrue(transmission_result)
 
+    def test_shutting_down_notifier(self):
+        self._notifier.start()
+        self.assertTrue(threading.active_count() == 2)
+        self._notifier.stop_polling()
 
 if __name__ == "__main__":
     unittest.main()

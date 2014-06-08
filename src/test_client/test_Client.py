@@ -31,11 +31,6 @@ class TestClient(unittest.TestCase):
         self.assertEqual(client_id, self.client._client_id)
 
 
-    #TODO move this to connectivity Tests
-    def test_registration_to_name_server_succeeds(self):
-        self.client.register_to_name_server()
-        print(threading.enumerate())
-        #todo Not sure how to test this.... Waits on another thread?
 
 
 

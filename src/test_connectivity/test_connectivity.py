@@ -18,6 +18,7 @@ class TestConnectivity(unittest.TestCase):
     def setUp(self):
         self.server = Server.Server()
         self.ns = Pyro4.locateNS()
+        self.client = Client.Client()
 
     def tearDown(self):
         pass
@@ -48,6 +49,12 @@ class TestConnectivity(unittest.TestCase):
             results = notifier.get_polled_data()
             transmission_result = notifier.post_to_server(results)
             self.assertTrue(transmission_result)
+
+    def test_registration_to_name_server_succeeds(self):
+        self.client.register_to_name_server()
+        print(threading.enumerate())
+        #todo Not sure how to test this.... Waits on another thread?
+
 
 if __name__ == "__main__":
     unittest.main()

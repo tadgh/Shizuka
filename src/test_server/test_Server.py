@@ -25,19 +25,31 @@ class TestServer(unittest.TestCase):
         self.server.notify({"test": 1})
         self.server.notify({"test2": 2})
         res = self.server.get_all_data()
-        self.assertEqual(res, [{"test": 1},{"test2": 2}])
+        self.assertEqual(res, [{"test": 1}, {"test2": 2}])
 
     def test_server_returns_nothing_on_no_data(self):
         res = self.server.get_all_data()
         self.assertListEqual(res, [])
 
-    def test_message_passes_to_server_from_client(self):
+    def test_notify_returns_true(self):
+        res = self.server.notify("whatever")
+        self.assertTrue(res)
 
+    def test_send_message_adds_to_queue(self):
+        self.server.send_message({"Data": "somevalue"})
+        self.server.send_message({"Data": "somevalue2"})
+        mes_list = self .server.get_all_messages()
+        self.assertTrue(len(mes_list) == 2)
 
+    def test_purge_removes_all_data(self):
+        self.server.notify({"Data": "somevalue"})
+        self.server.purge_data()
+        self.assertListEqual(self.server.get_all_data(), [])
 
-
-
-
+    def test_purge_removes_all_messages(self):
+        self.server.send_message({"Data": "somevalue"})
+        self.server.purge_messages()
+        self.assertListEqual(self.server.get_all_messages(), [])
 
 
 

@@ -11,7 +11,7 @@ class Server:
     def __init__(self):
         self._ns = None
         self._all_data = []
-        self.all_messages = []
+        self._all_messages = []
         self._clients = {}
 
     def get_all_data(self):
@@ -20,10 +20,20 @@ class Server:
         self.purge_data()
         return to_return
 
+    def get_all_messages(self):
+        logging.info("get_all_messages() called. Returning messages and clearing the local list.")
+        to_return = list(self._all_messages)
+        self.purge_messages()
+        return to_return
+
     ## Removes all data received from clients.
     def purge_data(self):
         logging.info("clearing all_data in the server... ")
         self._all_data.clear()
+    ## Removes all messages received from clients.
+    def purge_messages(self):
+        logging.info("clearing all_messages in the server... ")
+        self._all_messages.clear()
 
     ## In case the nameserver goes offline, we attempt to reconnect to it.
     def locate_nameserver(self):
@@ -37,7 +47,6 @@ class Server:
                 logging.error("Unknown error occurred attempting to reconnect to ns. Error Message : {}".format(e))
             time.sleep(5)
 
-
     ## Method that simply continues to poll, is started on a thread, typically.
     def poll_for_clients_continuously(self):
         while True:
@@ -48,7 +57,7 @@ class Server:
     # @param message The dictionary containing the message.
     def send_message(self, message):
         logging.info("Received message from client: {}".format(message))
-        self.all_messages.append(message)
+        self._all_messages.append(message)
 
     ## Checks the nameserver for instances of shizuka.client.CLIENT_NAME. If they are unknonw, adds them to client list.
     # If they are known, and the URI has changed, re-establish a new proxy with the new URI.

@@ -20,7 +20,7 @@ class TestBytesReceivedMonitor(unittest.TestCase):
         minimum = self.bytes_received_monitor.minimum()
         maximum = self.bytes_received_monitor.maximum()
         self.assertTrue(bytes_received >= minimum and bytes_received <= maximum,
-                        "RAM is not within upper and lower bound limits: {} <= {} <= {}".format(minimum,
+                        "Bytes Received is not within upper and lower bound limits: {} <= {} <= {}".format(minimum,
                                                                                                      bytes_received,
                                                                                                      maximum))
 
