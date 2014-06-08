@@ -20,7 +20,7 @@ class MonitorManager():
         if not isinstance(class_._instance, class_):
             class_._instance = object.__new__(class_, *args, **kwargs)
             class_._instance.monitor_list = {}
-            class_._instance._message_handler = None
+            class_._instance._message_queue = None
             logging.info("Created a new Monitor Manager singleton...")
         return class_._instance
 
@@ -31,16 +31,17 @@ class MonitorManager():
     def __init__(self):
         return
 
+    ## Sets the message handler, and grabs the relevant queue.
     def set_message_handler(self, handler):
-        self._instance._message_handler = handler
+        self._instance._message_queue = handler.get_queue()
 
     ## Queues the message to be sent back to the server.
     def send_message_to_server(self, message):
-        if self._instance._message_handler is not None:
-            logging.info("Sending message off to message_handler.")
-            self._instance._message_handler.post_to_server(message)
+        if self._instance._message_queue is not None:
+            logging.info("Sending message off to the queue.")
+            self._instance._message_queue.put(message)
         else:
-            logging.warning("No message handler is set in the monitor manager. Cannot send message: {}".format(message))
+            logging.warning("No message queue is set in the monitor manager. Cannot send message: {}".format(message))
 
     ## Adds a monitor object to the dictionary of monitors running on the client
     #

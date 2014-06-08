@@ -19,7 +19,7 @@ class TestMessageHandler(unittest.TestCase):
         #have to manually wipe monitors in between tests because this singleton stubbornly holds onto data.
 
     def test_message_queue_starts_empty(self):
-        self.assertListEqual(self.handler._message_queue, [])
+        self.assertTrue(self.handler._message_queue.empty())
 
     def messages_add_to_queue_correctly(self):
         self.handler.queue_message({"test": "data"})
