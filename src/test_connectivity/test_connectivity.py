@@ -18,7 +18,6 @@ class TestConnectivity(unittest.TestCase):
     def setUp(self):
         self.server = Server.Server()
         self.ns = Pyro4.locateNS()
-        self.client = Client.Client()
 
     def tearDown(self):
         pass
@@ -42,7 +41,6 @@ class TestConnectivity(unittest.TestCase):
         self.client.register_to_name_server()
         ns = Pyro4.locateNS()
         print(ns.list(prefix=self.client._client_id))
-
 
     def test_data_is_received_when_server_is_associated(self):
             notifier = Notifier.Notifier("shizuka.client.Mulder")

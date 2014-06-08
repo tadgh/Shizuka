@@ -88,6 +88,9 @@ def main():
     import StorageByteMonitor
     import MessageHandler
     import Notifier
+    import queue
+
+    message_queue = queue.Queue()
 
     cid = random.randint(0, 10000)
     logging.basicConfig(level=logging.INFO)

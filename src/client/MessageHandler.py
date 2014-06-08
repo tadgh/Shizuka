@@ -2,6 +2,7 @@ import Pyro4
 import logging
 import time
 import Pyro4.errors
+import queue
 from ClientErrors import ServerNotFoundError
 
 
@@ -9,7 +10,8 @@ class MessageHandler:
     def __init__(self, client_identifier, testing=False):
         self._client_identifier = client_identifier
         self._reporting_server = None
-        self._message_queue = []
+        self._message_queue = queue.Queue()
+
         #just a quick hack to allow me to run tests without using the connectivity aspect
         if testing:
             import Utils
@@ -17,20 +19,21 @@ class MessageHandler:
         else:
             self.reconnect_to_server()
 
-    ## Places a message(usually dict) into a queue to be sent to the server.
-    def queue_message(self, message):
-        logging.info("Queuing message: {}".format(message))
-        self._message_queue.append(message)
+    ##The method available to other modules that would like to send messages to the server through this handler.
+    # @return the queue that holds the messages. Allows clients to put new messages into it.
+    def get_queue(self):
+        return self._message_queue
+
 
     def post_all_to_server(self):
-        for message in self._message_queue:
-            self.post_to_server(message)
+        while not self._message_queue.empty():
+            self.post_to_server(self._message_queue.get())
 
     ## Notifies the server object (A pyro proxy) of any new messages.
     def post_to_server(self, message):
         if self._reporting_server is not None:
             try:
-                #todo gotta figure out best way to get the client ID in there.
+                logging.info("Throwing message to server: {}".format(message))
                 outgoing_message = {"client_id": self._client_identifier, "message": message}
                 data_was_received = self._reporting_server.send_message(outgoing_message)
             except AttributeError as e:
@@ -96,6 +99,9 @@ def main():
         "remove": [Constants.RAM_BYTE_MONITOR]
     }
 
+    mm.handle_config(config_dict)
+    mm.handle_config(config_dict)
+    mm.handle_config(config_dict)
     mm.handle_config(config_dict)
 
     mh.post_all_to_server()

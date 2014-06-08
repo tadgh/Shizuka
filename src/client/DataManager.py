@@ -10,10 +10,15 @@ class DataManager():
     def __new__(class_, *args, **kwargs):
         if not isinstance(class_._instance, class_):
             class_._instance = object.__new__(class_, *args, **kwargs)
+            class_._instance._message_queue = None
         return class_._instance
 
     def __init__(self):
         self._instance._state = "Unimplemented"
+
+    # Sets the handler for outgoing messages to the server.
+    def set_message_queue(self, handler):
+        self._instance._message_queue = handler.get_queue()
 
     ## Polls all monitors held by the monitor manager.
     #  @return A dict that has Key values of the Monitor IDs, and a list containing [minimum, current, maximum] for the
