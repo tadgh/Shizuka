@@ -11,6 +11,7 @@ class CommandInterface():
 
     def __init__(self):
         self._state = "Unimplemented"
+        self._message_queue = None
         restart_command = RestartCommand()
         shutdown_command = ShutdownCommand()
         network_info_command = NetworkInfoCommand()
@@ -18,6 +19,10 @@ class CommandInterface():
         self._allowed_commands = {restart_command.get_tag(): restart_command,
                                   shutdown_command.get_tag(): shutdown_command,
                                   network_info_command.get_tag(): network_info_command}
+
+    def set_message_queue(self, handler):
+        logging.info("Setting the outgoing message queue for the CommandInterface.")
+        self._message_queue = handler.get_queue()
 
     ## Executes a command passed from the server.
     #  @param command_object The command object to be executed.

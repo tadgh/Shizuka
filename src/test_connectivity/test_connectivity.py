@@ -42,12 +42,12 @@ class TestConnectivity(unittest.TestCase):
         ns = Pyro4.locateNS()
         print(ns.list(prefix=self.client._client_id))
 
-
     def test_data_is_received_when_server_is_associated(self):
             notifier = Notifier.Notifier("shizuka.client.Mulder")
             results = notifier.get_polled_data()
             transmission_result = notifier.post_to_server(results)
             self.assertTrue(transmission_result)
+
 
 if __name__ == "__main__":
     unittest.main()
