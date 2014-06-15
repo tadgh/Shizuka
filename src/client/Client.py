@@ -2,6 +2,7 @@ import logging
 import threading
 import Pyro4
 import CommandInterface
+import Constants
 import MonitorManager
 import Notifier
 import socket
@@ -19,6 +20,7 @@ class Client:
         logging.info("Initializing client with ID:{}".format(self._client_id))
         self._monitor_manager = None
         self._command_executor = None
+        self._message_queue = None
         #TODO is there a better way to start a new notifier?
         self._notifier = None
 
@@ -37,6 +39,10 @@ class Client:
     # @param command_executor the CommandInterface object for receiving command objects.
     def set_command_executor(self, command_executor):
         self._command_executor = command_executor
+
+    ## Sets the message handler for the client.
+    def set_message_queue(self, message_handler):
+        self._message_queue = message_handler.get_queue()
 
     ## Fires off the command to the notifier to start polling the hardware and sending the data to the server.
     #
@@ -80,40 +86,42 @@ class Client:
         #request_thread.setDaemon(True)
         request_thread.start()
 
+    def send_discovery(self):
+        message = {}
+        message["type"] = "Discovery"
+        message["data"] = Utils.discover()
+        self._message_queue.put(message)
+
+
 
 def main():
-    import RamByteMonitor
-    import BytesSentMonitor
-    import BytesReceivedMonitor
-    import StorageByteMonitor
     import MessageHandler
     import Notifier
     import queue
 
-    message_queue = queue.Queue()
-
-    cid = random.randint(0, 10000)
     logging.basicConfig(level=logging.INFO)
+
     client = Client()
-    monman1 = MonitorManager.MonitorManager()
+    monman = MonitorManager.MonitorManager()
     cexec = CommandInterface.CommandInterface()
     notifier = Notifier.Notifier("shizuka.client.Aristotle")
-    messagehandler = MessageHandler.MessageHandler("shizuka.client.Mulder")
+    messagehandler = MessageHandler.MessageHandler("shizuka.client.Testerino")
 
-    m1 = RamByteMonitor.RamByteMonitor()
-    m2 = BytesReceivedMonitor.BytesReceivedMonitor()
-    m3 = BytesSentMonitor.BytesSentMonitor()
+    #config dictionary for starting monitors.
+    #monitor_dict = {
+    #    "add": [Constants.RAM_BYTE_MONITOR, Constants.BYTES_RECEIVED_MONITOR, Constants.CPU_PERCENT_MONITOR]
+    #}
+    #for mount_point in Utils.get_drive_mountpoints():
+    #    monitor_dict["add"].append(Constants.STORAGE_BYTE_MONITOR + mount_point)
 
-    for mount_point in Utils.get_drive_mountpoints():
-        monman1.add_monitor(StorageByteMonitor.StorageByteMonitor(mount_point))
-
-    monman1.add_monitor(m1)
-    monman1.add_monitor(m2)
-    monman1.add_monitor(m3)
-    client.set_monitor_manager(monman1)
+    #monman.handle_config(monitor_dict)
+    client.set_message_queue(messagehandler)
+    client.set_monitor_manager(monman)
     client.set_command_executor(cexec)
     client.set_notifier(notifier)
     client.register_to_name_server()
+    client.send_discovery()
+    messagehandler.start()#OOPS FORGOT TO START THE HANDLER.
     client.begin_monitoring()
 
 

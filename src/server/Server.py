@@ -40,6 +40,7 @@ class Server:
         while True:
             try:
                 name_server = Pyro4.locateNS()
+                self._ns = name_server
                 return name_server
             except Pyro4.errors.NamingError as e:
                 logging.error("Unable to find NameServer for Pyro4. Is it running? Error message: {}".format(str(e)))
@@ -63,22 +64,25 @@ class Server:
     # If they are known, and the URI has changed, re-establish a new proxy with the new URI.
     def poll_for_clients(self):
         logging.info("Checking Name Server...")
-        try:
-            for client_identifier, client_uri in self._ns.list(regex="shizuka\.client\..*").items():
-                #this is the case where we've never seen this client before.
-                if client_identifier not in self._clients.keys():
-                    client = Pyro4.Proxy(client_uri)
-                    self._clients[client_identifier] = [client_uri, client]
-                    logging.info("Added New Client: {} --> {}".format(client_identifier, client_uri))
-                #this down here is the case where the client has disconnected, reconnected, and gotten a new URI.
-                #This requires us to change the associated proxy as well as URI.
-                elif self._clients[client_identifier][0] != client_uri:
-                    client = Pyro4.Proxy(client_uri)
-                    self._clients[client_identifier] = [client_uri, client]
-                    logging.info("Client has shown up under a new URI. Modified our "
-                                 "dictionary to reflect it: {} --> {}".format(client_identifier, client_uri))
-        except Pyro4.errors.NamingError:
-            logging.error("Could not find Name Server! Attempting Reconnect...")
+        if self._ns:
+            try:
+                for client_identifier, client_uri in self._ns.list(regex="shizuka\.client\..*").items():
+                    #this is the case where we've never seen this client before.
+                    if client_identifier not in self._clients.keys():
+                        client = Pyro4.Proxy(client_uri)
+                        self._clients[client_identifier] = [client_uri, client]
+                        logging.info("Added New Client: {} --> {}".format(client_identifier, client_uri))
+                    #this down here is the case where the client has disconnected, reconnected, and gotten a new URI.
+                    #This requires us to change the associated proxy as well as URI.
+                    elif self._clients[client_identifier][0] != client_uri:
+                        client = Pyro4.Proxy(client_uri)
+                        self._clients[client_identifier] = [client_uri, client]
+                        logging.info("Client has shown up under a new URI. Modified our "
+                                     "dictionary to reflect it: {} --> {}".format(client_identifier, client_uri))
+            except Pyro4.errors.NamingError:
+                logging.error("Could not find Name Server! Attempting Reconnect...")
+                self.locate_nameserver()
+        else:
             self.locate_nameserver()
 
     ## Method that kicks off the client-polling using the nameserver found during initialization. Finds objects in the

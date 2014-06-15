@@ -4,6 +4,7 @@ import unittest
 import Pyro4
 import MonitorManager
 import RamByteMonitor
+import MessageHandler
 import Client
 import logging
 
@@ -29,6 +30,15 @@ class TestClient(unittest.TestCase):
     def test_client_id_is_correct(self):
         client_id = "shizuka.client.{}".format(socket.gethostname())
         self.assertEqual(client_id, self.client._client_id)
+
+    def test_client_discovery_works(self):
+        mh = MessageHandler.MessageHandler(self.client._client_id, testing=True)
+        self.client.set_message_queue(mh)
+        self.client.send_discovery()
+        test = mh.get_queue().get()
+        self.assertTrue()
+
+
 
 
 

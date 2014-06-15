@@ -1,4 +1,7 @@
 import psutil
+import socket
+import platform
+from uuid import getnode
 from server.Server import Server
 
 
@@ -10,4 +13,20 @@ def get_drive_mountpoints():
 def mock_server():
     mocked_server = Server()
     return mocked_server
+
+
+def discover():
+    discovery_data = {}
+    discovery_data["FQDN"] = socket.getfqdn()
+    discovery_data["IP"] = socket.gethostbyname(socket.getfqdn())
+    discovery_data["MAC"] = getnode()
+    discovery_data["MOUNT_POINTS"] = get_drive_mountpoints()
+    discovery_data["CPU_COUNT"] = psutil.cpu_count()
+    discovery_data["RAM_COUNT"] = psutil.virtual_memory().total
+    discovery_data["PLATFORM"] = platform.system()
+    return discovery_data
+
+
+
+
 

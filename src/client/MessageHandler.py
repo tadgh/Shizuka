@@ -1,3 +1,4 @@
+import threading
 import Pyro4
 import logging
 import time
@@ -6,11 +7,13 @@ import queue
 from ClientErrors import ServerNotFoundError
 
 
-class MessageHandler:
+class MessageHandler(threading.Thread):
     def __init__(self, client_identifier, testing=False):
+        threading.Thread.__init__(self)
         self._client_identifier = client_identifier
         self._reporting_server = None
         self._message_queue = queue.Queue()
+        self._stop_processing = threading.Event()
 
         #just a quick hack to allow me to run tests without using the connectivity aspect
         if testing:
@@ -19,15 +22,27 @@ class MessageHandler:
         else:
             self.reconnect_to_server()
 
+    def stop_requested(self):
+        return self._stop_processing.is_set()
+
+    def request_stop(self):
+        self._stop_processing.set()
+
     ##The method available to other modules that would like to send messages to the server through this handler.
     # @return the queue that holds the messages. Allows clients to put new messages into it.
     def get_queue(self):
         return self._message_queue
 
-
+    ## Checks the queue after three seconds for new messages. When it finds a new message, it processes it and checks
+    # again.
     def post_all_to_server(self):
+        time.sleep(3)
         while not self._message_queue.empty():
             self.post_to_server(self._message_queue.get())
+
+    def run(self):
+        while not self.stop_requested():
+            self.post_all_to_server()
 
     ## Notifies the server object (A pyro proxy) of any new messages.
     def post_to_server(self, message):
@@ -82,8 +97,6 @@ class MessageHandler:
             time.sleep(5)
 
 
-
-
 def main():
     import MonitorManager
     import Constants
@@ -104,7 +117,13 @@ def main():
     mm.handle_config(config_dict)
     mm.handle_config(config_dict)
 
-    mh.post_all_to_server()
+    mh.start()
+    mm.handle_config(config_dict)
+    mm.handle_config(config_dict)
+    mm.handle_config(config_dict)
+    mm.handle_config(config_dict)
+    mm.handle_config(config_dict)
+
 
 
 
