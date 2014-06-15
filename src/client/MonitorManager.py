@@ -37,6 +37,7 @@ class MonitorManager():
 
     ## Queues the message to be sent back to the server.
     def send_message_to_server(self, message):
+        message['type'] = "Monitor Report"
         if self._instance._message_queue is not None:
             logging.info("Sending message off to the queue.")
             self._instance._message_queue.put(message)
@@ -85,10 +86,16 @@ class MonitorManager():
         try:
             for monitor_type in config_dict["add"]:
                 self.add_monitor(self.create_monitor(monitor_type))
-                results[monitor_type] = "Added" if monitor_type in self.list_monitors().keys() else "Failed to add"
+                if monitor_type in self.list_monitors().keys():
+                    results["Added"] = monitor_type
+                else:
+                    results["Failed"] = monitor_type + " failed to add."
             for monitor_type in config_dict["remove"]:
                 self.remove_monitor_by_type(monitor_type)
-                results[monitor_type] = "Removed" if monitor_type not in self.list_monitors().keys() else "Failed to remove"
+                if monitor_type not in self.list_monitors().keys():
+                    results["Removed"] = monitor_type
+                else:
+                    results["Failed"] = monitor_type + " failed to remove."
         except Exception as e:
             print("Unknown Error Occurred Modifying the monitor list!: {}".format(e))
 
