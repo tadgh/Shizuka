@@ -20,6 +20,8 @@ class CommandInterface():
                                   shutdown_command.get_tag(): shutdown_command,
                                   network_info_command.get_tag(): network_info_command}
 
+    ## Every class that needs to send messages has this method. Gives the CommandInterface a place to put outgoing messages.
+    # @param handler The MessageHandler you would like to send messages through.
     def set_message_queue(self, handler):
         logging.info("Setting the outgoing message queue for the CommandInterface.")
         self._message_queue = handler.get_queue()

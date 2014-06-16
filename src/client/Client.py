@@ -10,10 +10,15 @@ import random
 import Utils
 
 
-## The class that communicates with the server. This will need to be made into a Pyro4 Daemon, with a thread running the
-# polling duties, and another simply for communicating to the server.
-#
-# Holds onto a monitor manager as well as the command executor and notifier. A facade class to the underlying objects.
+## The class that serves to start up all necessary services on the client.
+#  Does the following:
+#  1. Creates a Monitor Manager(empty)
+#  2. Creates a CommandInterface(with default allowable commands)
+#  3. Creates a Notifier
+#  4. Creates a MessageHandler
+#  5. Connects them all
+#  6. Sends a discovery message to the server.
+#  7. Begins the monitoring loop.
 class Client:
     def __init__(self):
         self._client_id = "shizuka.client.{}".format(socket.gethostname())
@@ -40,7 +45,9 @@ class Client:
     def set_command_executor(self, command_executor):
         self._command_executor = command_executor
 
-    ## Sets the message handler for the client.
+    ## Sets the message Queue for the client. Internally, requires calls the get_queue() of the handler.
+    #
+    # @param message_handler The MessageHandler that is used for the messages.
     def set_message_queue(self, message_handler):
         self._message_queue = message_handler.get_queue()
 
@@ -61,6 +68,10 @@ class Client:
             logging.error("Could not gather data. No monitor manager is set.")
             return None
 
+    ## sends command off to the CommandInterface , which will then process whether it is allowed, and execute it.
+    #
+    # @param command The command tag(See Constants) indicating which command is to be executed.
+    # @return the result of the command execution. Passed up from CommandInterface
     def execute_command(self, command):
         logging.info("Passing command: '{}' off to command executor".format(command))
         return self._command_executor.execute_command(command)
@@ -86,6 +97,8 @@ class Client:
         #request_thread.setDaemon(True)
         request_thread.start()
 
+    ## Adds a discovery Message to the message Queue. You can see the content of the discovery message in the Utils file.
+    # This is how the webserver prefers to identify new clients.
     def send_discovery(self):
         message = {}
         message["type"] = "Discovery"

@@ -16,9 +16,11 @@ class Monitor:
         self.paused = False
         self._type = type
 
+    ## Negates the current value of paused.
     def togglePause(self):
         self.paused = not self.paused
 
+    ## Self-evident.
     def is_paused(self):
         return self.paused
 
@@ -27,16 +29,11 @@ class Monitor:
     def get_type(self):
         return self._type
 
-
-    ## @var paused
-    # a boolean indicating whether the monitor is paused or not.
-
     ## Abstract method, makes a single psutil call to return whichever parameter this monitor is polling for.
     #
     # @return Float value of the resource being monitored
     @abc.abstractmethod
     def poll(self):
-
         return
 
     ##Abstract method, returns the minimum possible value achievable by poll(), for the particular client.

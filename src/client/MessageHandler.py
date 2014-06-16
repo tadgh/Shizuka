@@ -22,9 +22,12 @@ class MessageHandler(threading.Thread):
         else:
             self.reconnect_to_server()
 
+    ## A check for whether the _stop_processing Event has been set.
+    # @ return A boolean indicating whether or not the Event is set.
     def stop_requested(self):
         return self._stop_processing.is_set()
 
+    ## Sets a flag to stop processing once the queue is done.
     def request_stop(self):
         self._stop_processing.set()
 
@@ -40,11 +43,15 @@ class MessageHandler(threading.Thread):
         while not self._message_queue.empty():
             self.post_to_server(self._message_queue.get())
 
+    ## The method called when the thread's .start() is called. Currently, continuously sends messages that are in the queue.
+    # Terminates only when self._stop_processing is set using a call to self.request_stop()
     def run(self):
         while not self.stop_requested():
             self.post_all_to_server()
 
     ## Notifies the server object (A pyro proxy) of any new messages.
+    # @param message The dictionary(or anything) that is to be sent to the server.
+    # @return A boolean indicating whether or not data was received on the server end.
     def post_to_server(self, message):
         if self._reporting_server is not None:
             try:

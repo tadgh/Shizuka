@@ -79,10 +79,6 @@ class Notifier(threading.Thread):
                 self.reconnect_to_server()
             time.sleep(10)
 
-        #poll_and_notify_thread = threading.Thread(target=poll_and_post, name="hardware_polling_thread")
-        #poll_and_notify_thread.setDaemon(True)
-        #poll_and_notify_thread.start()
-
     ## Called when unable to execute methods on remote server. Continuously attempts re-connection to Server and attempts
     # ping. When it succeeds, it sets the server and returns control to where it was called.
     def reconnect_to_server(self):

@@ -4,7 +4,7 @@ import Constants
 import logging
 
 
-## Command that executes a restart operation on the client computer.
+## Command that executes a restart operation on the client computer. IPCONFIG on windows, IFCONFIG on unix.
 #
 #
 class NetworkInfoCommand(Command):

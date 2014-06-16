@@ -14,12 +14,16 @@ class Server:
         self._all_messages = []
         self._clients = {}
 
+    ## returns and clears all data in the _all_data list.
+    # @return list containing _all_data
     def get_all_data(self):
         logging.info("get_all_data() called. Returning data and clearing the local list.")
         to_return = list(self._all_data)
         self.purge_data()
         return to_return
 
+    ## returns and clears all messages in  the _all_messages list.
+    # @return list containing _all_messages
     def get_all_messages(self):
         logging.info("get_all_messages() called. Returning messages and clearing the local list.")
         to_return = list(self._all_messages)
@@ -30,6 +34,7 @@ class Server:
     def purge_data(self):
         logging.info("clearing all_data in the server... ")
         self._all_data.clear()
+
     ## Removes all messages received from clients.
     def purge_messages(self):
         logging.info("clearing all_messages in the server... ")

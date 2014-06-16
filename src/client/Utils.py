@@ -14,7 +14,8 @@ def mock_server():
     mocked_server = Server()
     return mocked_server
 
-
+## Builds the discovery message. Includes: FQDN/IP/MAC/Mountpoints/# of CPUs/Amount of ram(Bytes)/System Platform
+# @return the dict containing discovery data.
 def discover():
     discovery_data = {}
     discovery_data["FQDN"] = socket.getfqdn()
