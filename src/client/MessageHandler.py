@@ -6,7 +6,9 @@ import Pyro4.errors
 import queue
 from ClientErrors import ServerNotFoundError
 
-
+## Class that handles any outgoing messages. Uses a Queue to hold any messages. Classes can call get_queue() to get a
+# reference to the outgoing queue. This is a threaded class, whos sole purpose is to consume the queue and send it to
+# the server.
 class MessageHandler(threading.Thread):
     def __init__(self, client_identifier, testing=False):
         threading.Thread.__init__(self)

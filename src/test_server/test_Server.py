@@ -1,4 +1,3 @@
-import threading
 import unittest
 import Server
 import Pyro4.naming
@@ -6,6 +5,7 @@ import Pyro4
 import threading
 import Client
 import logging
+import Constants
 
 logging.basicConfig(level=logging.INFO)
 
@@ -50,6 +50,25 @@ class TestServer(unittest.TestCase):
         self.server.send_message({"Data": "somevalue"})
         self.server.purge_messages()
         self.assertListEqual(self.server.get_all_messages(), [])
+
+    def test_get_all_messages(self):
+        msg = "test2"
+        self.server.send_message(msg)
+        msg_list = self.server.get_all_messages()
+        self.assertIn(msg, msg_list)
+
+    def test_get_all_data(self):
+        data = "asdadasd"
+        self.server.notify(data)
+        data_list = self.server.get_all_data()
+        self.assertIn(data, data_list)
+
+
+    def test_execute_command_sends_to_client(self):
+        import Constants
+        client = Client.Client()
+        self.server._clients["test"] = ["garbage_uri", client]#mocking a client
+        self.server.execute_command("test", Constants.NETWORK_INFO_TAG)
 
 
 

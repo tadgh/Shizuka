@@ -35,8 +35,8 @@ class TestClient(unittest.TestCase):
         mh = MessageHandler.MessageHandler(self.client._client_id, testing=True)
         self.client.set_message_queue(mh)
         self.client.send_discovery()
-        test = mh.get_queue().get()
-        self.assertTrue()
+        test = mh.get_queue().get_nowait()
+        self.assertTrue(test is not None)
 
 
 

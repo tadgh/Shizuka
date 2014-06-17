@@ -35,6 +35,14 @@ class TestMessageHandler(unittest.TestCase):
         self.handler.set_server(None, None)
         self.assertRaises(ClientErrors.ServerNotFoundError, self.handler.post_to_server, "test")
 
+    def test_stopping_message_handler(self):
+        self.handler.start()
+        self.handler.request_stop()
+        self.assertTrue(self.handler.stop_requested())
+
+    def test_queue_is_returned_properly(self):
+        q = self.handler.get_queue()
+        self.assertIs(q, self.handler._message_queue)
 
 
 
