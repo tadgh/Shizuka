@@ -31,7 +31,6 @@ class CPUPercentMonitor(Monitor):
 
 if __name__=="__main__":
     logging.basicConfig(level=logging.INFO)
-
     cpumon = CPUPercentMonitor()
     print(cpumon.poll())
 

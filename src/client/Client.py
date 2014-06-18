@@ -21,7 +21,7 @@ import Utils
 #  7. Begins the monitoring loop.
 class Client:
     def __init__(self):
-        self._client_id = "shizuka.client.{}".format(socket.gethostname())
+        self._client_id = self.input_unique_id()
         logging.info("Initializing client with ID:{}".format(self._client_id))
         self._monitor_manager = None
         self._command_executor = None
@@ -29,6 +29,8 @@ class Client:
         #TODO is there a better way to start a new notifier?
         self._notifier = None
 
+    def get_client_id(self):
+        return self._client_id
 
     ## Sets a list of monitors to be run on this client, via a monitor manager.
     def set_monitor_manager(self, monitor_manager):
@@ -38,6 +40,13 @@ class Client:
     def set_notifier(self, notifier):
         self._notifier = notifier
 
+    ## Allows the user to set a unique identifier for this client. If input is '', sets it to the FQDN of the client.
+    # @return the new unique ID.
+    def input_unique_id(self):
+        unique_id = input("Enter a unique name for this client(Just pressing enter will use the FQDN): ")
+        if unique_id.strip() == '':
+            unique_id = socket.getfqdn()
+        return unique_id
 
     ## Sets the process responsible for executing commands on the host computer.
     #
@@ -108,38 +117,28 @@ class Client:
         message = {}
         message["type"] = "Discovery"
         message["data"] = Utils.discover()
+        message["data"]["CLIENT_ID"] = self._client_id
         self._message_queue.put(message)
-
 
 
 def main():
     import MessageHandler
     import Notifier
-    import queue
 
     logging.basicConfig(level=logging.INFO)
 
     client = Client()
     monman = MonitorManager.MonitorManager()
     cexec = CommandInterface.CommandInterface()
-    notifier = Notifier.Notifier("shizuka.client.Aristotle")
-    messagehandler = MessageHandler.MessageHandler("shizuka.client.Testerino")
-
-    #config dictionary for starting monitors.
-    #monitor_dict = {
-    #    "add": [Constants.RAM_BYTE_MONITOR, Constants.BYTES_RECEIVED_MONITOR, Constants.CPU_PERCENT_MONITOR]
-    #}
-    #for mount_point in Utils.get_drive_mountpoints():
-    #    monitor_dict["add"].append(Constants.STORAGE_BYTE_MONITOR + mount_point)
-
-    #monman.handle_config(monitor_dict)
+    notifier = Notifier.Notifier(client.get_client_id())
+    messagehandler = MessageHandler.MessageHandler(client.get_client_id())
     client.set_message_queue(messagehandler)
     client.set_monitor_manager(monman)
     client.set_command_executor(cexec)
     client.set_notifier(notifier)
     client.register_to_name_server()
     client.send_discovery()
-    messagehandler.start()#OOPS FORGOT TO START THE HANDLER.
+    messagehandler.start()
     client.begin_monitoring()
 
 

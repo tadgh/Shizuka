@@ -14,6 +14,7 @@ def mock_server():
     mocked_server = Server()
     return mocked_server
 
+
 ## Builds the discovery message. Includes: FQDN/IP/MAC/Mountpoints/# of CPUs/Amount of ram(Bytes)/System Platform
 # @return the dict containing discovery data.
 def discover():
@@ -26,8 +27,4 @@ def discover():
     discovery_data["RAM_COUNT"] = psutil.virtual_memory().total
     discovery_data["PLATFORM"] = platform.system()
     return discovery_data
-
-
-
-
 
