@@ -4,7 +4,8 @@ from NetworkInfoCommand import NetworkInfoCommand
 import Constants
 import logging
 
-
+logger = logging.getLogger("CommandInterface")
+logger.setLevel(logging.INFO)
 ## Receives commands from the server and executes them.
 #
 class CommandInterface():
@@ -23,7 +24,7 @@ class CommandInterface():
     ## Every class that needs to send messages has this method. Gives the CommandInterface a place to put outgoing messages.
     # @param handler The MessageHandler you would like to send messages through.
     def set_message_queue(self, handler):
-        logging.info("Setting the outgoing message queue for the CommandInterface.")
+        logger.info("Setting the outgoing message queue for the CommandInterface.")
         self._message_queue = handler.get_queue()
 
     ## Executes a command passed from the server.
@@ -31,15 +32,15 @@ class CommandInterface():
     #  @return The results from the call(if any). None is returned if the call is not allowed.
     def execute_command(self, command_tag):
         try:
-            logging.info("Executing Command: {}".format(command_tag))
+            logger.info("Executing Command: {}".format(command_tag))
             results = self._allowed_commands[command_tag].execute()
             return results
         except KeyError:
-            logging.error("""Command {} not found in the client's list of allowed commands.
+            logger.error("""Command {} not found in the client's list of allowed commands.
                            Here is what is allowed: {}""".format(command_tag, self._allowed_commands.keys()))
             return None
         except Exception as e:
-            logging.error("Unknown error while executing Command: {}".format(e))
+            logger.error("Unknown error while executing Command: {}".format(e))
 
 
 if __name__ == "__main__":

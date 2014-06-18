@@ -7,6 +7,8 @@ import BytesReceivedMonitor
 import BytesSentMonitor
 import SwapByteMonitor
 
+logger = logging.getLogger("Monitor Manager")
+logger.setLevel(logging.INFO)
 ## Singleton class that handles all monitors on the client.
 #
 # This class handles the addition and removal of monitors. Contains the factory
@@ -21,7 +23,7 @@ class MonitorManager():
             class_._instance = object.__new__(class_, *args, **kwargs)
             class_._instance.monitor_list = {}
             class_._instance._message_queue = None
-            logging.info("Created a new Monitor Manager singleton...")
+            logger.info("Created a new Monitor Manager singleton...")
         return class_._instance
 
     ## Does nothing, Singleton pattern. Otherwise, __init__ is called each time
@@ -39,16 +41,16 @@ class MonitorManager():
     def send_message_to_server(self, message):
         message['type'] = "Monitor Report"
         if self._instance._message_queue is not None:
-            logging.info("Sending message off to the queue.")
+            logger.info("Sending message off to the queue.")
             self._instance._message_queue.put(message)
         else:
-            logging.warning("No message queue is set in the monitor manager. Cannot send message: {}".format(message))
+            logger.warning("No message queue is set in the monitor manager. Cannot send message: {}".format(message))
 
     ## Adds a monitor object to the dictionary of monitors running on the client
     #
     #
     def add_monitor(self, monitor):
-        logging.info("Adding monitor: {}".format(monitor.get_type()))
+        logger.info("Adding monitor: {}".format(monitor.get_type()))
         self._instance.monitor_list[monitor.get_type()] = monitor
 
     ## Removes a monitor object from the dictionary of monitors running on the client.
@@ -56,20 +58,20 @@ class MonitorManager():
     #
     def remove_monitor_by_type(self, monitor_type):
         try:
-            logging.info("Deleting Monitor: {}".format(monitor_type) )
+            logger.info("Deleting Monitor: {}".format(monitor_type) )
             del self._instance.monitor_list[monitor_type]
         except KeyError:
-            logging.error("Could not find Monitor with type: {}. Has it already been removed?".format(monitor_type))
+            logger.error("Could not find Monitor with type: {}. Has it already been removed?".format(monitor_type))
 
     ## Removes a monitor object from the dictionary of monitors running on the client.
     #  @param monitor The specific monitor object that needs to be removed.
     #
     def remove_monitor(self, monitor):
         try:
-            logging.info("Deleting Monitor: {}".format(monitor))
+            logger.info("Deleting Monitor: {}".format(monitor))
             del self._instance.monitor_list[monitor.get_type()]
         except KeyError:
-            logging.error("Could not find Monitor:{} in the monitor list. Has it already been removed?".format(monitor))
+            logger.error("Could not find Monitor:{} in the monitor list. Has it already been removed?".format(monitor))
 
     #Empty out all monitors.
     def clear_monitors(self):
@@ -117,18 +119,18 @@ class MonitorManager():
         elif monitor_type == Constants.CPU_PERCENT_MONITOR:
             return CPUPercentMonitor.CPUPercentMonitor()
         elif monitor_type.startswith(Constants.STORAGE_BYTE_MONITOR):
-            logging.info("create_monitor() -> Found storage monitor request. ")
+            logger.info("create_monitor() -> Found storage monitor request. ")
             #parse out the mount point that the storage monitor will attempt to monitor.
             #Element 2 of the tuple is the part after the separator: i.e; Storage Monitor: C:\
             mount_point = monitor_type.partition(Constants.STORAGE_BYTE_MONITOR)[2]
-            logging.info("create_monitor() -> Requested Mount point is: {}. ".format(mount_point))
+            logger.info("create_monitor() -> Requested Mount point is: {}. ".format(mount_point))
             if mount_point != '':
                 try:
                     return StorageByteMonitor.StorageByteMonitor(mount_point)
                 except OSError: #The mount point doesn't exist.
-                    logging.error("create_monitor() -> Mount point doesn't seem to exist!")
+                    logger.error("create_monitor() -> Mount point doesn't seem to exist!")
                     return None #for now. Will have to determine what to do later.
         else: #The type didn't match anything we know of.
-            logging.error("create_monitor() -> Unable to match the requested type.")
+            logger.error("create_monitor() -> Unable to match the requested type.")
             raise ValueError
 

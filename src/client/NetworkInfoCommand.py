@@ -3,7 +3,8 @@ import subprocess
 import Constants
 import logging
 
-
+logger = logging.getLogger("Command")
+logger.setLevel(logging.INFO)
 ## Command that executes a restart operation on the client computer. IPCONFIG on windows, IFCONFIG on unix.
 #
 #
@@ -12,12 +13,12 @@ class NetworkInfoCommand(Command):
         Command.__init__(self, Constants.NETWORK_INFO_TAG)
 
     def windows_execute(self):
-        logging.info("IPCONFIG called. ")
+        logger.info("IPCONFIG called. ")
         results = subprocess.check_output(["ipconfig", "/all"]).decode('utf-8')
         return results
 
     def nix_execute(self):
-        logging.info("IFCONFIG called. ")
+        logger.info("IFCONFIG called. ")
         results = subprocess.check_output(["ifconfig"]).decode("utf-8")
         return results
 

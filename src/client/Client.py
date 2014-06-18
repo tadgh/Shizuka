@@ -8,7 +8,7 @@ import Notifier
 import socket
 import random
 import Utils
-
+logger = logging.getLogger("Client")
 
 ## The class that serves to start up all necessary services on the client.
 #  Does the following:
@@ -22,7 +22,7 @@ import Utils
 class Client:
     def __init__(self):
         self._client_id = self.input_unique_id()
-        logging.info("Initializing client with ID:{}".format(self._client_id))
+        logger.info("Initializing client with ID:{}".format(self._client_id))
         self._monitor_manager = None
         self._command_executor = None
         self._message_queue = None
@@ -64,7 +64,7 @@ class Client:
     #
     #
     def begin_monitoring(self):
-        logging.info("Client has started the notifier's loop.")
+        logger.info("Client has started the notifier's loop.")
         self._notifier.start()
 
     ## Returns the monitor_list variable from the monitor_manager.
@@ -74,7 +74,7 @@ class Client:
         if self._monitor_manager is not None:
             return self._monitor_manager.list_monitors()
         else:
-            logging.error("Could not gather data. No monitor manager is set.")
+            logger.error("Could not gather data. No monitor manager is set.")
             return None
 
     ## sends command off to the CommandInterface , which will then process whether it is allowed, and execute it.
@@ -82,19 +82,28 @@ class Client:
     # @param command The command tag(See Constants) indicating which command is to be executed.
     # @return the result of the command execution. Passed up from CommandInterface
     def execute_command(self, command):
-        logging.info("Client Attempting to send command to CommandInterface")
+        logger.info("Client Attempting to send command to CommandInterface")
         if self._command_executor is not None:
-            logging.info("Passing command: '{}' off to command executor".format(command))
+            logger.info("Passing command: '{}' off to command executor".format(command))
             return self._command_executor.execute_command(command)
         else:
-            logging.error("Can not execute command. No command executor is set!")
+            logger.error("Can not execute command. No command executor is set!")
             return "Can not execute command. No command executor is set!"
-        
+
+    ## A special type of command, changes the monitor configuration on the client. Adds or removes based on the contents
+    # of the dictionary. No return value as the Monitor Manager puts a results message in the queue.
+    # @param config_dict The dictionary containing the Information. See MonitorManager for implementation details.
+    def configure_monitors(self, config_dict):
+        if self._monitor_manager is not None:
+            self._monitor_manager.handle_config(config_dict)
+        else:
+            logger.error("Could not pass monitoring message ")
+
     #Starts a new thread that continuously attempts to find the nameserver. Once found, it registers the client with its
     #hostname, which is shizuka.client.[hostname] . It then begins the request loop waiting for requests.
     def register_to_name_server(self):
         def register_internal():
-            logging.info("Registering Client to nameserver.")
+            logger.info("Registering Client to nameserver.")
             ns = None
             while ns is None:
                 try:
@@ -102,10 +111,10 @@ class Client:
                     daemon = Pyro4.Daemon()
                     client_uri = daemon.register(self)
                     ns.register(self._client_id, client_uri)
-                    logging.info("Found the following in the nameserver after registration of client:{}".format(ns.list()))
+                    logger.info("Found the following in the nameserver after registration of client:{}".format(ns.list()))
                     daemon.requestLoop()
                 except Exception as e:
-                    logging.error("Couldn't connect to nameserver to register the client. Re-trying.: {}".format(e))
+                    logger.error("Couldn't connect to nameserver to register the client. Re-trying.: {}".format(e))
 
         request_thread = threading.Thread(target=register_internal, name="request_waiting_thread")
         #request_thread.setDaemon(True)
@@ -125,7 +134,7 @@ def main():
     import MessageHandler
     import Notifier
 
-    logging.basicConfig(level=logging.INFO)
+    logger.setLevel(logging.INFO)
 
     client = Client()
     monman = MonitorManager.MonitorManager()

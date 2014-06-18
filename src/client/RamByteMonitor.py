@@ -3,6 +3,9 @@ import logging
 import Constants
 from Monitor import Monitor
 
+logger = logging.getLogger("Monitor")
+logger.setLevel(logging.INFO)
+
 ## Polls PSUtil to get a byte value for RAM currently in use.
 #
 #
@@ -10,11 +13,11 @@ class RamByteMonitor(Monitor):
 
     def __init__(self):
         Monitor.__init__(self, Constants.RAM_BYTE_MONITOR)
-        logging.info("Initializing RAM MB Usage Monitor")
+        logger.info("Initializing RAM MB Usage Monitor")
         memory_object = psutil.virtual_memory()
         self._minimum = 0.0
         self._maximum = memory_object.total
-        logging.info("Minimum: {}, Current: {}, Maximum: {} ".format(self._minimum, self.poll(), self._maximum))
+        logger.info("Minimum: {}, Current: {}, Maximum: {} ".format(self._minimum, self.poll(), self._maximum))
 
     ## Calculates memory in use by subtracting total memory from available memory.
     #  @return Float indicating the amount of bytes currently in use in memory.

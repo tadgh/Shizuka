@@ -6,6 +6,9 @@ import Pyro4.errors
 import queue
 from ClientErrors import ServerNotFoundError
 
+logger = logging.getLogger("Monitor")
+logger.setLevel(logging.INFO)
+
 ## Class that handles any outgoing messages. Uses a Queue to hold any messages. Classes can call get_queue() to get a
 # reference to the outgoing queue. This is a threaded class, whos sole purpose is to consume the queue and send it to
 # the server.
@@ -20,17 +23,21 @@ class MessageHandler(threading.Thread):
         #just a quick hack to allow me to run tests without using the connectivity aspect
         if testing:
             import Utils
+            logger.info("Since we are testing, creating a mock server...")
             self._reporting_server = Utils.mock_server()
         else:
+            logger.info("Since we are not testing, attempting to connect to server...")
             self.reconnect_to_server()
 
     ## A check for whether the _stop_processing Event has been set.
     # @ return A boolean indicating whether or not the Event is set.
     def stop_requested(self):
+        logger.info("Checking to see if we have a stop flag.")
         return self._stop_processing.is_set()
 
     ## Sets a flag to stop processing once the queue is done.
     def request_stop(self):
+        logger.info("Requesting stop in DataManager thread.")
         self._stop_processing.set()
 
     ##The method available to other modules that would like to send messages to the server through this handler.
@@ -57,14 +64,14 @@ class MessageHandler(threading.Thread):
     def post_to_server(self, message):
         if self._reporting_server is not None:
             try:
-                logging.info("Throwing message to server: {}".format(message))
+                logger.info("Throwing message to server: {}".format(message))
                 outgoing_message = {"client_id": self._client_identifier, "message": message}
                 data_was_received = self._reporting_server.send_message(outgoing_message)
             except AttributeError as e:
-                logging.error("Appears as though calling the remote notify() method on the server has failed attempting to reconnect.: {}".format(e))
+                logger.error("Appears as though calling the remote notify() method on the server has failed attempting to reconnect.: {}".format(e))
                 raise ServerNotFoundError
         else:
-            logging.error("NO ASSOCIATED SERVER FOUND")
+            logger.error("NO ASSOCIATED SERVER FOUND")
             raise ServerNotFoundError
         return data_was_received
 
@@ -72,9 +79,9 @@ class MessageHandler(threading.Thread):
     # @param reporting_server the pyro proxy object indicating the server to be associated.
     def set_server(self, reporting_server, server_name):
         if self._reporting_server is None:
-            logging.info("Initializing server for the first time --> Found Server : {} ".format(server_name))
+            logger.info("Initializing server for the first time --> Found Server : {} ".format(server_name))
         else:
-            logging.warning("Server being re-assigned. : {} ".format(server_name))
+            logger.warning("Server being re-assigned. : {} ".format(server_name))
         self._reporting_server = reporting_server
 
     ## Called when unable to execute methods on remote server. Continuously attempts re-connection to Server and attempts
@@ -88,21 +95,21 @@ class MessageHandler(threading.Thread):
                 server_name, server_uri = server_dict.popitem()
 
                 if server_uri:
-                    logging.info("Found Server named: {} . Joining...".format(server_name))
+                    logger.info("Found Server named: {} . Joining...".format(server_name))
                     reporting_server = Pyro4.Proxy(server_uri)
                     self.set_server(reporting_server, server_name)
                 try:
                     self._reporting_server.ping()
-                    logging.info("Ping succeeded on server. Returning control to polling thread.")
+                    logger.info("Ping succeeded on server. Returning control to polling thread.")
                     disconnected = False
                 except AttributeError as e:
-                    logging.error("Unable to ping server: Error message: {}".format(str(e)))
+                    logger.error("Unable to ping server: Error message: {}".format(str(e)))
             except KeyError as e:
-                logging.error("Found Nameserver, but couldn't find Server Object. Error Message: {}".format(str(e)))
+                logger.error("Found Nameserver, but couldn't find Server Object. Error Message: {}".format(str(e)))
             except Pyro4.errors.NamingError as e:
-                logging.error("Unable to find NameServer for Pyro4. Is it running? Error message: {}".format(str(e)))
+                logger.error("Unable to find NameServer for Pyro4. Is it running? Error message: {}".format(str(e)))
             except Exception as e:
-                logging.error("Unknown error occurred attempting to reconnect to server. Error Message : {}".format(e))
+                logger.error("Unknown error occurred attempting to reconnect to server. Error Message : {}".format(e))
             time.sleep(5)
 
 

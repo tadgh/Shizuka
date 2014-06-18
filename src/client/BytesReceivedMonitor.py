@@ -5,18 +5,20 @@ import Constants
 from Monitor import Monitor
 import psutil
 
+logger = logging.getLogger("Monitor")
+logger.setLevel(logging.INFO)
+
 ## Polls PSUtil to get a value for the amount of bytes received per second (B/s).
 #
-logging.basicConfig(level=logging.INFO)
 class BytesReceivedMonitor(Monitor):
 
     def __init__(self):
         Monitor.__init__(self, Constants.BYTES_RECEIVED_MONITOR)
-        logging.info("Initializing Bytes Received Monitor")
+        logger.info("Initializing Bytes Received Monitor")
         self._casual_name = "Network Received Monitor"
         self._minimum = 0.0
         self._maximum = sys.maxsize
-        logging.info("Minimum: {}, Current: {}, Maximum: {} ".format(self._minimum, self.poll(), self._maximum))
+        logger.info("Minimum: {}, Current: {}, Maximum: {} ".format(self._minimum, self.poll(), self._maximum))
 
     ## Gets the received bit rate of the monitor in bytes/sec.
     #  @return Float indicating how many bytes/sec are received.

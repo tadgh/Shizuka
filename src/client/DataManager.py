@@ -1,5 +1,8 @@
 import logging
 import MonitorManager
+
+logger = logging.getLogger("DataManager")
+logger.setLevel(logging.INFO)
 ## Singleton Class that handles all data on the client.
 #
 # This class is responsible for getting all data returned from all the monitors, and passing it along to the networking
@@ -30,6 +33,6 @@ class DataManager():
         for monitor_id, monitor in MonitorManager.MonitorManager().list_monitors().items():
             all_results[monitor.get_type()] = [monitor.minimum(), monitor.poll(), monitor.maximum()]
 
-        logging.info("Forthcoming Are all results from the Monitor Manager: \n***\n" +
+        logger.info("Forthcoming Are all results from the Monitor Manager: \n***\n" +
                      "\n".join([str(key) + str(value) for key,value in  all_results.items()]) + "\n***")
         return all_results

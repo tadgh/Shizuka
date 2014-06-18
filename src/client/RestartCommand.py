@@ -3,6 +3,8 @@ import subprocess
 import Constants
 import logging
 
+logger = logging.getLogger("Command")
+logger.setLevel(logging.INFO)
 
 
 ## Command that executes a restart operation on the client computer.
@@ -13,11 +15,11 @@ class RestartCommand(Command):
         Command.__init__(self, Constants.RESTART_TAG)
 
     def windows_execute(self):
-        logging.info("Restart Command Called. Restarting in 15!")
+        logger.info("Restart Command Called. Restarting in 15!")
         subprocess.call(["shutdown.exe", "/r", "/t", "15"])
 
     def nix_execute(self):
-        logging.info("Restart Command Called. Restarting in 15!")
+        logger.info("Restart Command Called. Restarting in 15!")
         subprocess.call(["shutdown", "-r", "15"])
 
 

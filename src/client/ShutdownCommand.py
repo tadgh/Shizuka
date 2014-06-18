@@ -3,6 +3,8 @@ import Constants
 import subprocess
 import logging
 
+logger = logging.getLogger("Command")
+logger.setLevel(logging.INFO)
 
 ## Command that executes a shutdown operation on the client computer.
 #
@@ -12,11 +14,11 @@ class ShutdownCommand(Command):
         Command.__init__(self, Constants.SHUTDOWN_TAG)
 
     def windows_execute(self):
-        logging.info("Shutdown Command Called. Shutting Down in 15!")
+        logger.info("Shutdown Command Called. Shutting Down in 15!")
         subprocess.call(["shutdown.exe", "/s", "/t", "15"])
 
     def nix_execute(self):
-        logging.info("Shutdown Command Called. Shutting Down in 15!")
+        logger.info("Shutdown Command Called. Shutting Down in 15!")
         subprocess.call(["shutdown", "-h", "15"])
 
 

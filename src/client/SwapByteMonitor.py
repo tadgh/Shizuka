@@ -3,6 +3,9 @@ import logging
 import Constants
 from Monitor import Monitor
 
+logger = logging.getLogger("Monitor")
+logger.setLevel(logging.INFO)
+
 ## Polls PSUtil to get a byte value for the amount of SWAP memory currently in use.
 #
 #
@@ -11,7 +14,7 @@ class SwapByteMonitor(Monitor):
 
     def __init__(self):
         Monitor.__init__(self, Constants.SWAP_BYTE_MONITOR)
-        logging.info("Initializing Swap MB Usage Monitor")
+        logger.info("Initializing Swap MB Usage Monitor")
         memory_object = psutil.swap_memory()
         self._minimum = 0.0
         self._maximum = memory_object.total

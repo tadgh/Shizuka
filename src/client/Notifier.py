@@ -6,6 +6,8 @@ import Pyro4
 import Pyro4.errors
 import time
 
+logger = logging.getLogger("Notifier")
+logger.setLevel(logging.INFO)
 
 ## Threaded Class for handling notification of any observers, when new data is polled.
 #
@@ -27,7 +29,7 @@ class Notifier(threading.Thread):
 
     ## Sets the stop flag, which stops the polling on the next iteration.
     def stop_polling(self):
-        logging.info("Flagging notifier to stop.")
+        logger.info("Flagging notifier to stop.")
         self._stop_flag.set()
 
     ## Checks if the stop flag is set.
@@ -59,23 +61,23 @@ class Notifier(threading.Thread):
                 outgoing_message = {"client_id": self._client_identifier, "polled_data": polled_data}
                 data_was_received = self._reporting_server.notify(outgoing_message)
             except AttributeError as e:
-                logging.error("Appears as though calling the remote notify() method on the server has failed attempting to reconnect.: {}".format(e))
+                logger.error("Appears as though calling the remote notify() method on the server has failed attempting to reconnect.: {}".format(e))
                 raise ServerNotFoundError
         else:
-            logging.error("NO ASSOCIATED SERVER FOUND")
+            logger.error("NO ASSOCIATED SERVER FOUND")
             raise ServerNotFoundError
         return data_was_received
 
     ## The method invoked in a new thread. This is the working loop that polls data, and returns it to the server.
     def run(self):
         while not self.stopped():
-            logging.info("Notifier initiating Data Poll...")
+            logger.info("Notifier initiating Data Poll...")
             results = self.get_polled_data()
-            logging.info("Notifier posting Data to Server...")
+            logger.info("Notifier posting Data to Server...")
             try:
                 self.post_to_server(results)
             except ServerNotFoundError as e:
-                logging.error("Giving control to reconnection method. Posting to server failed...")
+                logger.error("Giving control to reconnection method. Posting to server failed...")
                 self.reconnect_to_server()
             time.sleep(10)
 
@@ -90,21 +92,21 @@ class Notifier(threading.Thread):
                 server_name, server_uri = server_dict.popitem()
 
                 if server_uri:
-                    logging.info("Found Server named: {} . Joining...".format(server_name))
+                    logger.info("Found Server named: {} . Joining...".format(server_name))
                     reporting_server = Pyro4.Proxy(server_uri)
                     self.set_server(reporting_server, server_name)
                 try:
                     self._reporting_server.ping()
-                    logging.info("Ping succeeded on server. Returning control to polling thread.")
+                    logger.info("Ping succeeded on server. Returning control to polling thread.")
                     disconnected = False
                 except AttributeError as e:
-                    logging.error("Unable to ping server: Error message: {}".format(str(e)))
+                    logger.error("Unable to ping server: Error message: {}".format(str(e)))
             except KeyError as e:
-                logging.error("Found Nameserver, but couldn't find Server Object. Error Message: {}".format(str(e)))
+                logger.error("Found Nameserver, but couldn't find Server Object. Error Message: {}".format(str(e)))
             except Pyro4.errors.NamingError as e:
-                logging.error("Unable to find NameServer for Pyro4. Is it running? Error message: {}".format(str(e)))
+                logger.error("Unable to find NameServer for Pyro4. Is it running? Error message: {}".format(str(e)))
             except Exception as e:
-                logging.error("Unknown error occurred attempting to reconnect to server. Error Message : {}".format(e))
+                logger.error("Unknown error occurred attempting to reconnect to server. Error Message : {}".format(e))
             time.sleep(5)
 
 
