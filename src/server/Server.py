@@ -4,41 +4,36 @@ import logging
 import time
 import Pyro4.errors
 import Pyro4.naming
+import queue
 
 
 ## Class responsible for the aggregation of all clients.
 class Server:
     def __init__(self):
         self._ns = None
-        self._all_data = []
-        self._all_messages = []
+        self._all_data = queue.Queue()
+        self._all_messages = queue.Queue()
         self._clients = {}
 
     ## returns and clears all data in the _all_data list.
     # @return list containing _all_data
     def get_all_data(self):
         logging.info("get_all_data() called. Returning data and clearing the local list.")
-        to_return = list(self._all_data)
-        self.purge_data()
+        to_return = []
+        while not self._all_data.empty():
+            to_return.append(self._all_data.get())
+            self._all_data.task_done()
         return to_return
 
     ## returns and clears all messages in  the _all_messages list.
     # @return list containing _all_messages
     def get_all_messages(self):
         logging.info("get_all_messages() called. Returning messages and clearing the local list.")
-        to_return = list(self._all_messages)
-        self.purge_messages()
+        to_return = []
+        while not self._all_messages.empty():
+            to_return.append(self._all_messages.get())
+            self._all_messages.task_done()
         return to_return
-
-    ## Removes all data received from clients.
-    def purge_data(self):
-        logging.info("clearing all_data in the server... ")
-        self._all_data.clear()
-
-    ## Removes all messages received from clients.
-    def purge_messages(self):
-        logging.info("clearing all_messages in the server... ")
-        self._all_messages.clear()
 
     ## In case the nameserver goes offline, we attempt to reconnect to it.
     def locate_nameserver(self):
@@ -58,12 +53,6 @@ class Server:
         while True:
             self.poll_for_clients()
             time.sleep(10)
-
-    ## Method meant for message communication from clients. Success reports/ Status reports, what have you.
-    # @param message The dictionary containing the message.
-    def send_message(self, message):
-        logging.info("Received message from client: {}".format(message))
-        self._all_messages.append(message)
 
     ## Checks the nameserver for instances of shizuka.client.CLIENT_NAME. If they are unknonw, adds them to client list.
     # If they are known, and the URI has changed, re-establish a new proxy with the new URI.
@@ -128,7 +117,14 @@ class Server:
     # @param data A dictionary containing all relevant polling data for the client.
     def notify(self, data):
         logging.info("Received some data from client. Appending to ALL list.\n{}".format(data))
-        self._all_data.append(data)
+        self._all_data.put(data)
+        return True
+
+    ## Method meant for message communication from clients. Success reports/ Status reports, what have you.
+    # @param message The dictionary containing the message.
+    def send_message(self, message):
+        logging.info("Received message from client: {}".format(message))
+        self._all_messages.put(message)
         return True
 
     #Simple lightweight method that allows a client to verify its connection. This will only be called by clients.
@@ -150,10 +146,7 @@ class Server:
             logging.error("Found client in list: {} , but could not execute command remotely. It is",
                           " possible the URI has changed, or the client has gone offline. ".format(self._clients[target_client]))
             return "Couldn't execute remote method on target. Is it offline?"
-        if results is None:
-            print("Call did not return any results. ")
-        else:
-            print("Returned information: {}".format(results))
+        return results
 
 
 

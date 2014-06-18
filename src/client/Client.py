@@ -73,8 +73,13 @@ class Client:
     # @param command The command tag(See Constants) indicating which command is to be executed.
     # @return the result of the command execution. Passed up from CommandInterface
     def execute_command(self, command):
-        logging.info("Passing command: '{}' off to command executor".format(command))
-        return self._command_executor.execute_command(command)
+        logging.info("Client Attempting to send command to CommandInterface")
+        if self._command_executor is not None:
+            logging.info("Passing command: '{}' off to command executor".format(command))
+            return self._command_executor.execute_command(command)
+        else:
+            logging.error("Can not execute command. No command executor is set!")
+            return "Can not execute command. No command executor is set!"
         
     #Starts a new thread that continuously attempts to find the nameserver. Once found, it registers the client with its
     #hostname, which is shizuka.client.[hostname] . It then begins the request loop waiting for requests.

@@ -41,16 +41,6 @@ class TestServer(unittest.TestCase):
         mes_list = self .server.get_all_messages()
         self.assertTrue(len(mes_list) == 2)
 
-    def test_purge_removes_all_data(self):
-        self.server.notify({"Data": "somevalue"})
-        self.server.purge_data()
-        self.assertListEqual(self.server.get_all_data(), [])
-
-    def test_purge_removes_all_messages(self):
-        self.server.send_message({"Data": "somevalue"})
-        self.server.purge_messages()
-        self.assertListEqual(self.server.get_all_messages(), [])
-
     def test_get_all_messages(self):
         msg = "test2"
         self.server.send_message(msg)
@@ -63,14 +53,21 @@ class TestServer(unittest.TestCase):
         data_list = self.server.get_all_data()
         self.assertIn(data, data_list)
 
-
-    def test_execute_command_sends_to_client(self):
+    def test_execute_command_sends_to_client_on_fail(self):
         import Constants
         client = Client.Client()
         self.server._clients["test"] = ["garbage_uri", client]#mocking a client
         self.server.execute_command("test", Constants.NETWORK_INFO_TAG)
 
-
+    def test_execute_command_sends_to_client_on_success(self):
+        import Constants
+        import CommandInterface
+        client = Client.Client()
+        ci = CommandInterface.CommandInterface()
+        client.set_command_executor(ci)
+        self.server._clients["test"] = ["garbage_uri", client]#mocking a client
+        res = self.server.execute_command("test", Constants.NETWORK_INFO_TAG)
+        self.assertRegexpMatches(res, "Ethernet")
 
 if __name__ == "__main__":
     unittest.main()

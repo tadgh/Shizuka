@@ -41,20 +41,8 @@ class CommandInterface():
         except Exception as e:
             logging.error("Unknown error while executing Command: {}".format(e))
 
-    ## Server request to add a monitor object
-    #  @param monitor The monitor to be added
-    #
-    def add_monitor(self, monitor):
-        raise NotImplementedError()
-
-    ## Server request to add a monitor object
-    #  @param name of The monitor to be removed
-    #
-    def remove_monitor(self, monitor):
-        raise NotImplementedError()
-
-
 
 if __name__ == "__main__":
     ci = CommandInterface()
-    ci.execute_command(Constants.NETWORK_INFO_TAG)
+    res = ci.execute_command(Constants.NETWORK_INFO_TAG)
+    print(res)
