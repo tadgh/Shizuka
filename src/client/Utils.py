@@ -2,7 +2,8 @@ import psutil
 import socket
 import platform
 from uuid import getnode
-from server.Server import Server
+#from server.Server import Server
+from Server import Server
 
 
 ## Returns a list of partition mount points for a given computer

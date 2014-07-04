@@ -5,6 +5,7 @@ import threading
 import Pyro4
 import Pyro4.errors
 import time
+import datetime
 
 logger = logging.getLogger("Notifier")
 logger.setLevel(logging.INFO)
@@ -58,7 +59,10 @@ class Notifier(threading.Thread):
     def post_to_server(self, polled_data):
         if self._reporting_server is not None:
             try:
-                outgoing_message = {"client_id": self._client_identifier, "polled_data": polled_data}
+                outgoing_message = {
+                    "client_id": self._client_identifier,
+                    "polled_data": polled_data,
+                    "timestamp": datetime.datetime.now()}
                 data_was_received = self._reporting_server.notify(outgoing_message)
             except AttributeError as e:
                 logger.error("Appears as though calling the remote notify() method on the server has failed attempting to reconnect.: {}".format(e))
@@ -79,7 +83,6 @@ class Notifier(threading.Thread):
             except ServerNotFoundError as e:
                 logger.error("Giving control to reconnection method. Posting to server failed...")
                 self.reconnect_to_server()
-
             time.sleep(10)
 
     ## Called when unable to execute methods on remote server. Continuously attempts re-connection to Server and attempts
