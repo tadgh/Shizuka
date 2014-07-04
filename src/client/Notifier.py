@@ -1,3 +1,4 @@
+import datetime
 import DataManager
 from ClientErrors import ServerNotFoundError
 import logging
@@ -58,7 +59,10 @@ class Notifier(threading.Thread):
         if self._reporting_server is not None:
             try:
                 #todo gotta figure out best way to get the client ID in there.
-                outgoing_message = {"client_id": self._client_identifier, "polled_data": polled_data}
+                outgoing_message = {
+                    "client_id": self._client_identifier,
+                    "polled_data": polled_data,
+                    "timestamp": datetime.datetime.now()}
                 data_was_received = self._reporting_server.notify(outgoing_message)
             except AttributeError as e:
                 logger.error("Appears as though calling the remote notify() method on the server has failed attempting to reconnect.: {}".format(e))

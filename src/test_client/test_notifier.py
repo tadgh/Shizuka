@@ -31,9 +31,9 @@ class TestNotifier(unittest.TestCase):
         self.assertIsInstance(results, dict)
 
     def test_data_is_received_when_server_is_associated(self):
-                results = self._notifier.get_polled_data()
-                transmission_result = self._notifier.post_to_server(results)
-                self.assertTrue(transmission_result)
+        results = self._notifier.get_polled_data()
+        transmission_result = self._notifier.post_to_server(results)
+        self.assertTrue(transmission_result)
 
     def test_shutting_down_notifier(self):
         self._notifier.start()
