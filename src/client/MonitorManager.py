@@ -23,6 +23,7 @@ class MonitorManager():
             class_._instance = object.__new__(class_, *args, **kwargs)
             class_._instance.monitor_list = {}
             class_._instance._message_queue = None
+            class_._instance._monitor_lock = None
             logger.info("Created a new Monitor Manager singleton...")
         return class_._instance
 
@@ -33,8 +34,11 @@ class MonitorManager():
     def __init__(self):
         return
 
+    def set_lock(self, lock):
+        self._instance._monitor_lock = lock
+
     ## Sets the message handler, and grabs the relevant queue.
-    def set_message_handler(self, handler):
+    def set_message_queue(self, handler):
         self._instance._message_queue = handler.get_queue()
 
     ## Queues the message to be sent back to the server.
@@ -84,6 +88,8 @@ class MonitorManager():
     ## Handles a monitor configuration dictionary and delegates creation and deletion of monitors as necessary.
     ## TODO maybe don't have the result set built here. Keep separate?
     def handle_config(self, config_dict):
+        self._instance._monitor_lock.acquire()
+        logger.info("Attempting to handle the configuration dictionary...")
         results = {}
         try:
             for monitor_type in config_dict["add"]:
@@ -102,6 +108,7 @@ class MonitorManager():
             print("Unknown Error Occurred Modifying the monitor list!: {}".format(e))
 
         self.send_message_to_server(results)
+        self._instance._monitor_lock.release()
 
     ## Monitor factory based on type.
     # @param monitor_type the TYPE of the monitor, can be found in Constants.py
@@ -122,7 +129,7 @@ class MonitorManager():
             logger.info("create_monitor() -> Found storage monitor request. ")
             #parse out the mount point that the storage monitor will attempt to monitor.
             #Element 2 of the tuple is the part after the separator: i.e; Storage Monitor: C:\
-            mount_point = monitor_type.partition(Constants.STORAGE_BYTE_MONITOR)[2]
+            mount_point = monitor_type.partition(Constants.STORAGE_BYTE_MONITOR)[2].strip()
             logger.info("create_monitor() -> Requested Mount point is: {}. ".format(mount_point))
             if mount_point != '':
                 try:

@@ -63,17 +63,18 @@ class Server:
             try:
                 for client_identifier, client_uri in self._ns.list(regex="shizuka\.client\..*").items():
                     #this is the case where we've never seen this client before.
-                    if client_identifier not in self._clients.keys():
+                    proper_client_id = client_identifier.replace("shizuka.client.", "")
+                    if proper_client_id not in self._clients.keys():
                         client = Pyro4.Proxy(client_uri)
-                        self._clients[client_identifier] = [client_uri, client]
-                        logger.info("Added New Client: {} --> {}".format(client_identifier, client_uri))
+                        self._clients[proper_client_id] = [client_uri, client]
+                        logger.info("Added New Client: {} --> {}".format(proper_client_id, client_uri))
                     #this down here is the case where the client has disconnected, reconnected, and gotten a new URI.
                     #This requires us to change the associated proxy as well as URI.
-                    elif self._clients[client_identifier][0] != client_uri:
+                    elif self._clients[proper_client_id][0] != client_uri:
                         client = Pyro4.Proxy(client_uri)
-                        self._clients[client_identifier] = [client_uri, client]
+                        self._clients[proper_client_id] = [client_uri, client]
                         logger.info("Client has shown up under a new URI. Modified our "
-                                     "dictionary to reflect it: {} --> {}".format(client_identifier, client_uri))
+                                     "dictionary to reflect it: {} --> {}".format(proper_client_id, client_uri))
             except Pyro4.errors.NamingError:
                 logger.error("Could not find Name Server! Attempting Reconnect...")
                 self.locate_nameserver()
@@ -142,6 +143,7 @@ class Server:
             results = self._clients[target_client][1].execute_command(command_tag)
         except KeyError as e:
             logger.error("Could not find target client in the list. Are you sure it's been registered? Error: {}".format(e))
+            logger.error("These are current clients: ", self._clients)
             return "Could not find target client in the list. Are you sure it's been registered?"
         except AttributeError as e1:
             logger.error("Found client in list: {} , but could not execute command remotely. It is",
@@ -149,6 +151,19 @@ class Server:
             return "Couldn't execute remote method on target. Is it offline?"
         return results
 
+    def configure_monitors(self, target_client, config_dict):
+        logger.info("Attempting to send monitor configuration dictionary...")
+        try:
+            results = self._clients[target_client][1].configure_monitors(config_dict)
+        except KeyError as e:
+            logger.error("Could not find target client in the list. Are you sure it's been registered? Error: {}".format(e))
+            logger.error("These are current clients: " + str(self._clients))
+            return "Could not find target client in the list. Are you sure it's been registered?"
+        except AttributeError as e1:
+            logger.error("Found client in list: {} , but could not execute command remotely. It is",
+                          " possible the URI has changed, or the client has gone offline. ".format(self._clients[target_client]))
+            return "Couldn't execute remote method on target. Is it offline?"
+        return results
 
 
 

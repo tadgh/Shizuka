@@ -94,10 +94,14 @@ class Client:
     # of the dictionary. No return value as the Monitor Manager puts a results message in the queue.
     # @param config_dict The dictionary containing the Information. See MonitorManager for implementation details.
     def configure_monitors(self, config_dict):
+
         if self._monitor_manager is not None:
+            logger.info("Sending configuration dictionary to MonitorManager.")
             self._monitor_manager.handle_config(config_dict)
+            return True
         else:
             logger.error("Could not pass monitoring message ")
+            return False
 
     #Starts a new thread that continuously attempts to find the nameserver. Once found, it registers the client with its
     #hostname, which is shizuka.client.[hostname] . It then begins the request loop waiting for requests.
@@ -110,14 +114,13 @@ class Client:
                     ns = Pyro4.locateNS()
                     daemon = Pyro4.Daemon()
                     client_uri = daemon.register(self)
-                    ns.register(self._client_id, client_uri)
+                    ns.register("shizuka.client." + self._client_id, client_uri)
                     logger.info("Found the following in the nameserver after registration of client:{}".format(ns.list()))
                     daemon.requestLoop()
                 except Exception as e:
                     logger.error("Couldn't connect to nameserver to register the client. Re-trying.: {}".format(e))
 
         request_thread = threading.Thread(target=register_internal, name="request_waiting_thread")
-        #request_thread.setDaemon(True)
         request_thread.start()
 
     ## Adds a discovery Message to the message Queue. You can see the content of the discovery message in the Utils file.
@@ -133,21 +136,45 @@ class Client:
 def main():
     import MessageHandler
     import Notifier
-
+    import threading
     logger.setLevel(logging.INFO)
+    logger.info("Instantiating the different components we need.")
 
+
+    #Instantiating the different components we need.
     client = Client()
     monman = MonitorManager.MonitorManager()
     cexec = CommandInterface.CommandInterface()
     notifier = Notifier.Notifier(client.get_client_id())
     messagehandler = MessageHandler.MessageHandler(client.get_client_id())
+
+    logger.info("Setting the outgoing message queue.")
+    #Setting the outgoing message queue
     client.set_message_queue(messagehandler)
+    monman.set_message_queue(messagehandler)
+
+    ##TODO THIS SHIT IS TEMPORARY. MAKE A LOCK FACTORY CLASS OR SOMETHING.
+    ##SETTING LOCKS FOR THE MONITORS SO WHEN THEY ARE BEING MODIFIED THEY CANT BE POLLED.
+    lock = threading.RLock()
+    monman.set_lock(lock)
+    notifier._data_manager.set_lock(lock)
+
+    logger.info("Giving client access to crucial components")
+    #Giving client access to crucial components
     client.set_monitor_manager(monman)
     client.set_command_executor(cexec)
     client.set_notifier(notifier)
+
+    #making the client visible on the nameserver
     client.register_to_name_server()
+
+    #Sending a "Hey I"m here!" message to the server.
     client.send_discovery()
+
+    #Starting the outgoing message queue
     messagehandler.start()
+
+    #Beginning the monitoring cycle.
     client.begin_monitoring()
 
 

@@ -6,7 +6,7 @@ import Pyro4.errors
 import queue
 from ClientErrors import ServerNotFoundError
 
-logger = logging.getLogger("Monitor")
+logger = logging.getLogger("MessageHandler")
 logger.setLevel(logging.INFO)
 
 ## Class that handles any outgoing messages. Uses a Queue to hold any messages. Classes can call get_queue() to get a
@@ -32,7 +32,6 @@ class MessageHandler(threading.Thread):
     ## A check for whether the _stop_processing Event has been set.
     # @ return A boolean indicating whether or not the Event is set.
     def stop_requested(self):
-        logger.info("Checking to see if we have a stop flag.")
         return self._stop_processing.is_set()
 
     ## Sets a flag to stop processing once the queue is done.

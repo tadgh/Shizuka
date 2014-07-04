@@ -9,6 +9,7 @@ import time
 logger = logging.getLogger("Notifier")
 logger.setLevel(logging.INFO)
 
+
 ## Threaded Class for handling notification of any observers, when new data is polled.
 #
 # The notifier will be running on a separate thread, and polling for new data on a defined interval.
@@ -57,7 +58,6 @@ class Notifier(threading.Thread):
     def post_to_server(self, polled_data):
         if self._reporting_server is not None:
             try:
-                #todo gotta figure out best way to get the client ID in there.
                 outgoing_message = {"client_id": self._client_identifier, "polled_data": polled_data}
                 data_was_received = self._reporting_server.notify(outgoing_message)
             except AttributeError as e:
@@ -79,6 +79,7 @@ class Notifier(threading.Thread):
             except ServerNotFoundError as e:
                 logger.error("Giving control to reconnection method. Posting to server failed...")
                 self.reconnect_to_server()
+
             time.sleep(10)
 
     ## Called when unable to execute methods on remote server. Continuously attempts re-connection to Server and attempts

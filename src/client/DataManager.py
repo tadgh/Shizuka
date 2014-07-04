@@ -14,10 +14,15 @@ class DataManager():
         if not isinstance(class_._instance, class_):
             class_._instance = object.__new__(class_, *args, **kwargs)
             class_._instance._message_queue = None
+            class_._instance._monitor_lock = None
         return class_._instance
 
     def __init__(self):
         self._instance._state = "Unimplemented"
+
+    # For accessing the monitors. The lock ensures that we don't
+    def set_lock(self, lock):
+        self._instance._monitor_lock = lock
 
     # Sets the handler for outgoing messages to the server.
     def set_message_queue(self, handler):
@@ -28,11 +33,13 @@ class DataManager():
     # particular monitor.
     #
     def poll_all(self):
+        self._instance._monitor_lock.acquire()
         all_results = {}
 
         for monitor_id, monitor in MonitorManager.MonitorManager().list_monitors().items():
             all_results[monitor.get_type()] = [monitor.minimum(), monitor.poll(), monitor.maximum()]
 
         logger.info("Forthcoming Are all results from the Monitor Manager: \n***\n" +
-                     "\n".join([str(key) + str(value) for key,value in  all_results.items()]) + "\n***")
+                     "\n".join([str(key) + str(value) for key, value in all_results.items()]) + "\n***")
+        self._instance._monitor_lock.release()
         return all_results
